@@ -1,2 +1,2 @@
-# WSP_Project
+# WSP_Exercise_App
 Web Server Programming Project Repo
