@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Runtime Fitness - Discover</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="discover.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+
+  <header>
+    <h1>Runtime Fitness</h1>
+    <h4>Track and share your fitness journey</h4>
+    <!-- <h4></h4> -->
+  </header>
+
+    <div class="content">
+
+        <div class="container">
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="#contact">Virtual Appointments</a>
+        </div>
+            <div class="dropdown">
+            <button type="button" onclick="redirectDiscover()">Discover</button>
+                <div class="dropdown-content">
+                <ul>  
+                    <li><a href="#">Runtime Workouts</a></li>
+                    <li><a href="#">Community Catalogue</a></li>
+                    <li><a href="#" class="last">Challenge Page</a></li>
+                </ul>
+                </div>
+            </div>
+            <div class="sign-in" >
+                <button onclick="openLogin()">Sign In/Sign Up</button>
+            </div>
+        </div>
+
+    
+
+         <!-- SIGN UP  -->
+
+      <div class="login-popup" id="loginForm">
+        <form action="/action_page.php" class="login-container">
+          <button type="button" class="close" onclick="closeLogin()">x</button>
+
+          <h1>Login</h1>
+    
+          <label for="email"><b>Email</b></label>
+          <input class="emailinput" type="text" placeholder="Enter Email" name="email" required>
+          <br>
+          <label class="pswlabel" for="psw"><b>Password</b></label>
+          <input class="pswinput" type="password" placeholder="Enter Password" name="psw" required>
+          <br>
+          <button type="submit" class="loginbtn">Login</button>
+          <br> 
+          <button type="button" class="btn" onclick="signUpForm(); closeLogin()">Not a member? Sign Up</button>
+        </form>
+      </div>
+
+    
+
+            <!-- SIGN UP  -->
+    
+      <div class="signUp-popup" id="signUpForm">
+        <form action="/action_page.php" class="signUp-container">
+
+          <h1>Background Information</h1>
+    
+          <label class="first" for="firstName"><b>First Name</b></label>
+          <input class="firstName" type="text" placeholder="John" name="firstName" required>
+          <br>
+          <label class="last" for="lastName"><b>Last Name</b></label>
+          <input class="lastName" type="text" placeholder="Doe" name="lastName" required>
+          <br>
+          <label class="bday" for="birthday"><b>Date of Birth</b></label>
+          <input class="birthday" type="date" placeholder="01/02/1993" name="birthday" required>
+
+          <h1 class="register">Account Registration</h1>
+
+          <label class="usr" for="username"><b>Username</b></label>
+          <input class="username" type="text" placeholder="Create a Username" name="username" required>
+          <br>
+          <label for="email"><b>Email</b></label>
+          <input class="email" type="text" placeholder="Enter Email" name="email" required>
+          <br>
+          <label class="pswlabel" for="psw"><b>Password</b></label>
+          <input class="password" type="password" placeholder="Enter Password" name="psw" required>
+          <br>
+          <label class="mobile" for="phone"><b>Mobile #</b></label>
+          <input class="phone" type="tel" placeholder="(888)888-8888" name="phone">
+          <br>
+          
+          <div class="checkbox-question1">
+            <input type="checkbox" name="question1">
+            <label for="question1">Would you like to receive text notifications?</label>
+            <br>
+          </div>
+          <div class="checkbox-question2">
+            <input type="checkbox" name="question2">
+            <label for="question2">Would you like to receive email notifications?</label>
+          </div>
+
+          <div class="terms-heading">
+            <h4>Terms & Conditions</h4>
+          </div>
+
+          <div class="terms-container">
+            <h5>A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. </h5>
+          </div>
+          
+          <input type="checkbox" name="terms" required>
+          <label class ="terms-agreement" for="terms">I agree to the Terms & Conditions</label>
+
+          <br>
+          <button type="submit" class="registerbtn" onclick="closeSignUp()">Register</button>
+
+          <button type="button" class="cancel" onclick="closeSignUp()">Cancel</button>
+
+        </form>
+      </div>
+    
+  <!------------------- BODY --------------------->
+      <div class="body-container">
+        <div class="columns">
+            <div class="column">
+                <h2>Runtime Workouts</h2>
+                    <p>Information about the workouts</p>
+                    <!-- insert a href to go to that specific page -->
+                    <!-- insert image of some sort -->
+
+
+            </div>
+            <div class="column">
+                <h2>Community Catalogue</h2>
+                    <p>Information about the community catalogue</p>
+                    <!-- insert a href to go to that specific page -->
+                    <!-- insert image of some sort -->
+
+
+
+            </div>
+            <div class="column">
+                <h2>Challenge Page</h2>
+                    <p>Information about the challenges</p>
+                    <!-- insert a href to go to that specific page -->
+                    <!-- insert image of some sort -->
+
+
+
+            </div>
+          </div>
+
+
+
+
+      </div> 
+    </div>  
+    
+
+
+
+
+    <footer>
+        <ul> 
+          <li><a href=#>About</a></li>
+          <li><a href=#>Contact</a></li>
+          <li><a href=#>Affiliations</a></li>
+          <li class="year">Copyright 2021</li>
+        </ul>
+    </footer>
+
+    
+        <!-- Vue JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+   <!----------------------- JavaScript --------------------->
+          <!-- Login Functions -->
+    <script>
+      function openLogin() {
+        document.getElementById("loginForm").style.display = "block";
+      }
+
+      function closeLogin() {
+        document.getElementById("loginForm").style.display = "none";
+      }
+
+      // <!-- SignUp Functions -->
+      function signUpForm(){
+        document.getElementById("signUpForm").style.display = "block";
+      }
+      function closeSignUp(){
+        document.getElementById("signUpForm").style.display = "none";
+      }
+    </script>
+
+    <script>
+      
+      function redirectDiscover(){
+        window.location.href = "discover.html";
+      }
+
+    </script>
+
+
+
+</html>

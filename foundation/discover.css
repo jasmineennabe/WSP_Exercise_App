@@ -1,0 +1,43 @@
+/* ***************************** STYLES ****************************** 
+--blood-red: #710000;
+--amaranth-red: #d90429;
+--selective-yellow: #ffba08;
+--white: #ffffff;
+--grey: #474747;
+--black: #000000;
+
+--font-family: 'Bebas Neue', sans-serif;
+--font-family: 'Montserrat', sans-serif;
+
+/******************** BODY STYLES *******************/
+
+.body-container {
+    /* height: 1000px; */
+    margin: 0 80px;
+}
+.columns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.column {
+    display: inline-block;
+    margin: 25px;
+    padding: 20px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    border-color: rgba(71, 71, 71, .2);
+    height: 1000px;
+    width: 500px;
+    text-align: center;
+}
+.column h2 {
+    padding: 10px;
+    display: inline;
+}
+.column p {
+    margin: 10px 20px;
+    text-align: center;
+    padding: 0;
+}
