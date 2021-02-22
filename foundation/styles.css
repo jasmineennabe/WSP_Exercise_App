@@ -1,9 +1,13 @@
 /* ***************************** STYLES ****************************** 
---blood-red: #710000ff;
---amaranth-red: #d90429ff;
---selective-yellow: #ffba08ff;
---white: #ffffffff;
---black: #000000ff;
+--blood-red: #710000;
+--amaranth-red: #d90429;
+--selective-yellow: #ffba08;
+--white: #ffffff;
+--grey: #474747;
+--black: #000000;
+
+--font-family: 'Bebas Neue', sans-serif;
+--font-family: 'Montserrat', sans-serif;
 
 /* ***************************** GENERAL STYLES ****************************** */
 
@@ -14,7 +18,7 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Bebas Neue', sans-serif;
 }
-p, a {
+p, a, li {
   font-family: 'Montserrat', sans-serif;
 }
 h2 {
@@ -38,8 +42,9 @@ header {
 
 /* ***************************** BODY ****************************** */
 
-header, h1, h4 {
-  margin: 10px;
+header h1, header h4 {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .content {
@@ -86,7 +91,7 @@ header, h1, h4 {
   margin-top: 12px;
 }
 .navbar a:hover, button:hover {
-  background-color: rgba(217, 4, 41, .5);
+  background-color: rgba(255, 186, 8, .7);
   border-radius: 5px;
 }
 .dropdown {
@@ -98,30 +103,35 @@ header, h1, h4 {
   display: none;
   position: absolute;
   min-width: 150px;
-  background-color: #d90429ff;
+  background-color: rgba(217, 4, 41, .9);
   z-index: 1;
+  border-radius: 5px;
 }
 .dropdown-content ul {
   padding: 0;
+  margin: 0;
 }
 .dropdown-content li {
   list-style-type: none;
   padding: 0;
 }
 .dropdown-content a {
-  color: black;
+  color: white;
   text-decoration: none;
   padding: 15px;
   display: block;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+.dropdown-content .last {
+  border-bottom-style: none;
 }
 .dropdown-content a:hover {
-  background-color: rgba(217, 4, 41, .5);
+  background-color: rgba(255, 186, 8, .7);
+  border-radius: 5px;
 }
 .dropdown:hover .dropdown-content {
   display: block;
-}
-.dropdown:hover button {
-  background-color: rgba(217, 4, 41, .5);
 }
 .sign-in {
   text-align: end;
@@ -130,31 +140,284 @@ header, h1, h4 {
   color: white;
 }
 
+
+/* SIGN IN FORM */
+
+/* The popup form - hidden by default */
+.login-popup {
+  background-color: white;
+  float: right;
+  display: none;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 1;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+} 
+.pswlabel b{
+  margin-right: 20px;
+  margin-left: -15px;
+}
+.emailinput {
+  margin-left: 28px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+.pswinput {
+  margin-top: 10px;
+  margin-left: -10px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Add styles to the form container */
+.login-container {
+  margin: 10px 0;
+  background-color: white;
+}
+.login-popup h1 {
+  margin-top: 0;
+}
+
+/* Full-width input fields */
+.login-container input[type=text], .login-container input[type=password] {
+  width: 50%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.login-container input[type=text]:focus, .login-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.close {
+  text-align: right;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  margin-left: 400px;
+  margin-right: 10px;
+  margin-top: 0;
+}
+
+.loginbtn {
+  background-color: #d90429;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Set a style for the submit/login button */
+.login-container .btn {
+  background-color: #ffba08;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.login-container .btn:hover, .loginbtn:hover  {
+  background-color: #474747;
+  opacity: .5;
+}
+.close:hover {
+  color: black;
+  background-color: rgba(71, 71, 71, .3);
+}
+
+/* SIGN UP FORM */
+
+.signUp-popup {
+  background-color: white;
+  float: right;
+  display: none;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 1;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+}
+
+.signUp-popup h1 {
+  font-size: 25px;
+  /* margin-left: 20px; */
+}
+
+
+.bday b{
+  margin-left: -60px;
+  margin-right: 13px;
+}
+
+.mobile b {
+  margin-left: -25px;
+  margin-right: 22px;
+}
+
+.usr b, .first b, .last b {
+  margin-left: -20px;
+  margin-right: 13px;
+}
+
+.email, .password {
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  width: 15%;
+}
+.email {
+  margin-left: 35px;
+}
+
+.username, .firstName, .lastName, .birthday, .phone {
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  width: 15%;
+}
+
+.signUp-container {
+  margin: 10px 0;
+  background-color: white;
+}
+
+.signUp-container input[type=text], .signUp-container input[type=password] {
+  /* width: 50%; */
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.signUp-container input[type=text]:focus, .signUp-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.checkbox-question1, .checkbox-question2  {
+  margin: 10px 0;
+}
+
+.checkbox-question1 {
+  margin-left: -15px;
+}
+
+.terms-heading h4 {
+  padding-left: 0;
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+.terms-container {
+  overflow: scroll;
+  border-style: solid;
+  width: 15%;
+  margin: 10px auto;
+  height: 200px;
+}
+
+.terms-container h5 {
+  padding: 5px;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 0;
+}
+
+.terms-agreement {
+  font-size: 15px;
+}
+
+.registerbtn {
+  color: white;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.cancel {
+  background-color: white;
+  color: #474747;
+  text-decoration: underline;
+  padding: 10px;
+  display: inline-block;
+  margin: 0;
+}
+
+.registerbtn:hover, .cancel:hover {
+  background-color: #474747;
+  opacity: .5;
+  color: white;
+}
+
+
 p a {
   color: black;
-  /* text-decoration: */
 }
 p a:hover {
-  background-color: rgba(255, 186, 8, .4);
+  background-color: rgba(255, 186, 8, .6);
+  border-radius: 5px;
+  padding: 3px;
 }
 
 h2 + p, h3 + p {
   margin-top: 0px;
 }
 .image {
+  padding-right: 20px;
   margin: 0 40px;
+  margin-right: 0;
+  display: inline-block;
 }
-.image figcaption {
-  margin-top: 10px;
-  margin-left: 25px;
-  font-style: italic;
+.social h3 {
+  margin-top: 30px;
 }
+.social ul {
+  margin: 0;
+  padding-bottom: 20px;
+}
+.social li, .social a {
+  color: black;
+  font-size: 20px;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+.social li {
+  padding: 20px;
+  display: inline-block;
+}
+.social a:hover {
+  background-color: rgba(255, 186, 8, .6);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.field {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 25px;
+  text-align: center;
+  padding: 20px;
+}
+.input {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
 
 /* ***************************** FOOTER ****************************** */
 
 footer {
-  background-color: #ffffffff;
-  padding-top: 50px;
+  background-color: #d90429ff;
+  padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 40px;
 }
@@ -163,18 +426,26 @@ footer h2 {
   padding-top: 20px;
 }
 footer a {
-  color: black;
-  font-size: 20px;
+  color: white;
+  font-size: 16px;
   padding: 0;
   text-decoration: none;
 }
 footer a:hover {
-  background-color: rgba(255, 186, 8, .4);
+  background-color: rgba(255, 186, 8, .7);
   padding: 15px;
   border-radius: 5px;
+}
+footer ul {
+  text-align: center;
 }
 footer li {
   list-style-type: none;
   margin: 10px 30px;
   display: inline-block;
+}
+.year {
+  color: white;
+  font-size: 16px;
+  padding: 0;
 }
