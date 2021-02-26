@@ -23,7 +23,7 @@
 
     
     
-        <div class="social">
+        <!-- <div class="social">
           <h3>Sign in on these platforms to share your Runtime content!</h3>
             <ul>
               <li><a href="#">Email</a></li>
@@ -31,7 +31,7 @@
               <li><a href="#">Twitter</a></li>
               <li><a href="#">Instagram</a></li>
             </ul>
-        </div>
+        </div> -->
 
         <div class="field">
           <label>Stay up to date!</label><br>
