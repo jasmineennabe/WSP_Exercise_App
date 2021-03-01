@@ -6,7 +6,7 @@ import 'bulma';
 import 'buefy/dist/buefy.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './sass/main.scss'
-
+import 'chart.js'
 
 Vue.config.productionTip = false
 
