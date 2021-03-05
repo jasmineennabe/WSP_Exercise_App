@@ -1,10 +1,14 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-
-    <div id="navbarBasicExample" class="navbar-menu">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" :class="{ 'is-active': isActive }" @click.prevent="isActive = !isActive">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+    <div class="navbar-menu" :class="{ 'is-active': isActive }" @click.prevent="isActive = !isActive">
       <div class="navbar-start">
         <i class="fas fa-fire-alt navbar-item"></i>
-        <a class="navbar-item appTitle">Runtime Fitness</a>
+        <a class="appTitle">Runtime Fitness</a>
 
         <router-link class="navbar-item" tag="a" to="/">
             Home    
@@ -20,93 +24,107 @@
             </a> 
 
             <div class="navbar-dropdown">
-                <router-link class="navbar-item" tag="a" to="/workouts">
-                    Runtime Workouts    
-                </router-link> 
-                <router-link class="navbar-item" tag="a" to="/cc">
-                    Community Catalogue    
-                </router-link> 
-                <router-link class="navbar-item" tag="a" to="/challenges">
-                    Challenges    
-                </router-link> 
+                <ul>
+                    <li>
+                      <router-link class="navbar-item" tag="a" to="/workouts">
+                        Runtime Workouts    
+                      </router-link> 
+                    </li>
+                    <li>
+                      <router-link class="navbar-item" tag="a" to="/about">
+                        About    
+                      </router-link> 
+                    </li>
+                    <li>
+                      <router-link class="navbar-item last" tag="a" to="/contact">
+                        Contact    
+                      </router-link> 
+                    </li>
+                </ul>
             </div>
-        </div>
+        </div>  
+        <MyWallBadge />
+                
       </div>
-
-        <div class="navbar-end">
-        <div class="navbar-item">
-            <div class="buttons">
-                <router-link class="navbar-item button is-light" tag="a" to="/signup">
-                    Sign Up    
-                </router-link>
-                <a class="navbar-item button is-light" onclick=openLogin()>
-                    Login     
-                </a>
-            </div>
+      <div class="navbar-end">
+        <LoginBadge />
       </div>
-    </div>
-        <div class="login-popup" id="loginForm">
-            <form action="/action_page.php" class="login-container">
-              <button type="button" class="close" onclick="closeLogin()">x</button>
-
-              <h1>Login</h1>
-        
-              <label for="email"><b>Email</b></label>
-              <input class="emailinput" type="text" placeholder="Enter Email" name="email" required>
-              <br>
-              <label class="pswlabel" for="psw"><b>Password</b></label>
-              <input class="pswinput" type="password" placeholder="Enter Password" name="psw" required>
-              <br>
-              <button type="submit" class="loginbtn">Login</button>
-              <br> 
-            </form>
-        </div>
   </div>
 </nav>
 </template>
 
 <script>
-
-    // function openLogin() {
-    //       document.getElementById("loginForm").style.display = "block";
-    //     }
+  import LoginBadge from "./LoginBadge";
+  import MyWallBadge from "./MyWallBadge";
 
 export default {
-
+    data: ()=> ({
+      isActive:false
+    }),
+    components: {
+      LoginBadge,
+      MyWallBadge
+    }
 }
 </script>
 
 <style>
-
-.navbar, .navbar-start, .navbar-end {
+.navbar-menu {
     background-color: #d90429ff;
-    width: 100%;
+    padding: 0 20px;
+    height: 65px;
 }
-.navbar-start {
-    padding-left: 40px;
-}
-.navbar-end {
-    padding-right: 40px;
-}
-.fas {
-    color: black;
+.navbar i.fas {
     font-size: 40px;
-    margin-top: 10px;
+    color: black;
+    padding-right: 0;
 }
-.navbar-item + .appTitle {
-    padding: 15px 0;
+a.appTitle {
     font-size: 35px;
-    font-family: 'Bangers', cursive;    
-    margin-right: 30px;
+    padding-top: 5px;
+    padding-left: 5px;
+    margin-right: 10px;
+    color: black;
+    font-family: 'Bangers', cursive;
 }
-.buttons .is-light {
-    padding: 15px 30px;
+a.navbar-item {
+    color: black;
+    font-family: 'Bebas Neue', sans-serif;
+    padding: 0 50px;
+    font-size: 23px;
 }
-.navbar-item .button {
+div.navbar-dropdown {
+    background-color: #d90429ff;
+    padding: 0;
+}
+.navbar-dropdown a.navbar-item {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  color: white;
+  border-bottom: solid;
+  border-color: white;
+  border-width: 1px;
+}
+.navbar-dropdown a.last {
+  border: none;
+}
+a.navbar-item.button.is-light {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    font-size: 22px;
+    margin-left: 10px;
+    margin-right: 5px;
     color: black;
 }
-.button.is-light:hover {
+
+
+/* HOVER STYLES */
+a.navbar-item:hover {
     background-color: rgba(255, 186, 8, .7);
+}
+a.navbar-item.button.is-light:hover {
+    background-color: rgba(255, 185, 8, 0.815);
 }
 
 </style>
