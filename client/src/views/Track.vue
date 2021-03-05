@@ -1,45 +1,28 @@
 <template>
   <div class="track">
-      <div class="nav-container first">
-            <button>+ Add Activity</button>
-        <div class="nav-element">
-            
+      <div class="columns">
+          <div class="empty"></div>
+          <div class="sized">
+            <div class="workouts">
+                <h2>My Workouts</h2>
+                <router-link to="/routine" tag="a">+ Add Activity</router-link>
+
+            </div>
+
+            <div class="track-fitness">
+                <h2>Track</h2>
+                    <p>Weekly Progress</p>
+                    <progress class="progress is-warning" value="1" max="7"></progress>
+                    <caption>Woohoo! You've worked out _ days this week so far!
+                        <br>Keep it up!
+                    </caption>
+            </div>
+          </div>
+
+            <div class="empty"></div>
+
+        
         </div>
-      </div>
-
-      <div class="nav-container second">
-            <h2>My Workouts</h2>
-        <div class="nav-element">
-            
-        </div>
-      </div>
-
-      <div class="nav-container third">
-            <h2>Track</h2>
-        <div class="graphs">
-            <figure class="daily-graph">
-                <h3 class="daily-title">Daily Fitness</h3>
-                <div class="chart">
-                    <div class="xaxis">
-                        <h6>Su M T W Th F Sa</h6>
-                    </div>
-            
-
-                </div>
-            </figure>
-
-            <figure class="weekly-graph">
-                <h3 class="weekly-title">Weekly Fitness</h3>
-                <div class="chart">
-                    <div class="yaxis">
-                        <h6>Su M T W Th F Sa</h6>
-                    </div>
-
-                </div>
-            </figure>
-        </div>
-      </div>
-
   </div>
 </template>
 
@@ -47,6 +30,16 @@
 
 <script>
 export default {
+    data:()=> ({
+    //    progressBar = [1, 2, 3, 4, 5, 6, 7] 
+    }),
+    methods: {
+       progressCap() {
+           
+
+           
+       }
+    }
 
 }
 </script>
@@ -55,89 +48,73 @@ export default {
 
 <style>
 .track {
-    height: 100vh;
+    margin: 30px;
 }
-.nav-container {
-    background-color: white;
-    padding: 10px 0;
-    border: solid;
-    border-color: #a3a3a3;
-    border-radius: 5px;
-    margin-top: 40px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+.empty {
+    width: 10vw;
+}
+.sized {
+    width: 75vw;
+    /* border: solid; */
+    margin: 20px;
+}
+.track-fitness {
+    margin: 10px 10px 30px 10px;
     text-align: center;
+    border: solid;
+    border-radius: 5px;
+    border-color: #a3a3a3;
+    height: 400px;
 }
-.nav-container.first {
-    margin-top: 30px;
-    height: 80px;
-    width: 15%;
+.workouts {
+    margin: 10px 10px 30px 10px;
+    text-align: center;
+    border: solid;
+    border-radius: 5px;
+    border-color: #a3a3a3;
+    height: 400px;
 }
-.nav-container.second, .nav-container.third {
-    height: 250px;
-}
-
-button, h2 {
-    border: none;
-    background-color: white;
-    font-size: 25px;
+.workouts h2 {
     font-family: 'Bebas Neue', sans-serif;
-    padding: 5px 10px;  
+    color: black;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    clear: right;
+}
+.workouts a {
+    padding: 0 3px;
+    background-color: white;
     color: #710000;
-    font-weight: 500;
-    margin-bottom: 30px;
-}
-button {
+    border: solid;
+    border-radius: 4px;
+    border-color: rgba(255, 185, 8, 0.815);
     cursor: pointer;
-    padding-top: 15px;
-}
-
-.graphs {
-    display: inline;
-}
-h3.daily-title {
-    font-size: 20px;
-    margin-top: -40px;
-    padding: 20px 0 20px 20px;
-    float: left;
-    width: 140px;
-    color: black;
-
-}
-h3.weekly-title {
-    font-size: 20px;
-    margin-top: -40px;
-    padding: 20px 20px 20px 0;
     float: right;
-    width: 140px;
+    margin-right: 60px;
+    font-family: 'Bebas Neue', sans-serif;
+    margin-top: -42px;
+    font-size: 30px;
+}
+.track-fitness h2 {
+    font-family: 'Bebas Neue', sans-serif;
     color: black;
+    margin-top: 15px;
+    font-size: 30px;
+}
+.track-fitness p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    margin-top: 30px;
+    color: #710000;
+}
+.track-fitness caption {
+    display: inline;
+}
+progress.progress {
+    margin: 20px 40px;
+    width: 900px;
 }
 
-figure.daily-graph, figure.weekly-graph {
-    margin: 0;
-    border-left: solid;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: black;
-    width: 180px;
-    height: 100px;
-    display: inline-block;
-}
-figure.daily-graph {
-    margin-left: -80px;
-}
-figure.weekly-graph {
-    margin-left: 100px;
-    margin-right: -70px;
-}
-.xaxis, .yaxis {
-    font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
-    width: 180px;
-}
-h6 {
-    display: inline;
-    width: 180px;
-}
+
 </style>
