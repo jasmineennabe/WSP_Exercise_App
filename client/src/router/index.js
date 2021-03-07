@@ -11,6 +11,7 @@ const routes = [
   { path: '/mywall', name: 'My Wall', component: MyWall },
   { path: '/login', name: 'Login', component: Login },
   { path: '/routine', name: 'Routine', component: () => import(/* webpackChunkName: "about" */ '../views/Routine.vue')},
+  { path: '/settings', name: 'Settings', component: () => import(/* webpackChunkName: "about" */ '../views/Settings.vue')},
   { path: '/about', name: 'About', component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')},
   { path: '/signup', name: 'Sign Up', component: () => import(/* webpackChunkName: "about" */ '../views/Signup.vue')},
   { path: '/track', name: 'Track', component: () => import(/* webpackChunkName: "about" */ '../views/Track.vue')}
