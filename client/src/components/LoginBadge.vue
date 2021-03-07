@@ -9,8 +9,8 @@
             </router-link>
         </div>
         <div class="greeting" v-else>
-            Hello, Jasmine
-            (<a @click="logout">
+            <router-link class="greeting-name" to="/settings">Hello, Jasmine</router-link>
+            (<a class="greeting-logout" @click="logout">
                 Log out
             </a>)
         </div>
@@ -42,11 +42,20 @@ export default {
 }
 .greeting {
     font-family: 'Bangers', cursive;
-    margin: 15px 10px;
+    margin: 10px;
     font-size: 25px;
     color: black;
 }
-.greeting a {
+a.greeting-name {
+    color: black;
+    font-family: 'Bangers', cursive;
+    margin: 10px;
+    font-size: 25px;
+}
+a.greeting-logout {
     color: #ffba08;
+    font-family: 'Bangers', cursive;
+    margin: 10px;
+    font-size: 25px;
 }
 </style>

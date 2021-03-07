@@ -6,7 +6,29 @@
             <div class="workouts">
                 <h2>My Workouts</h2>
                 <router-link to="/routine" tag="a">+ Add Activity</router-link>
-
+                <br><br>
+                <div class="columns routine-buttons">
+                    <div class="column is-one-fifth routine1">
+                        <h3>View Workout</h3>
+                        <h4>Assoc. Title</h4>
+                        <button><i class="fas fa-dumbbell"></i></button>
+                    </div>
+                    <div class="column is-one-fifth routine2">
+                        <h3>View Workout</h3>
+                        <h4>Assoc. Title</h4>
+                        <button><i class="fas fa-dumbbell"></i></button>
+                    </div>
+                    <div class="column is-one-fifth routine3">
+                        <h3>View Workout</h3>
+                        <h4>Assoc. Title</h4>
+                        <button><i class="fas fa-dumbbell"></i></button>
+                    </div>
+                    <div class="column is-one-fifth routine4">
+                        <h3>View Workout</h3>
+                        <h4>Assoc. Title</h4>
+                        <button><i class="fas fa-dumbbell"></i></button>
+                    </div>
+                </div>
             </div>
 
             <div class="track-fitness">
@@ -64,7 +86,7 @@ export default {
     border: solid;
     border-radius: 5px;
     border-color: #a3a3a3;
-    height: 400px;
+    height: 300px;
 }
 .workouts {
     margin: 10px 10px 30px 10px;
@@ -83,7 +105,7 @@ export default {
     clear: right;
 }
 .workouts a {
-    padding: 0 3px;
+    padding: 0 5px;
     background-color: white;
     color: #710000;
     border: solid;
@@ -115,6 +137,32 @@ progress.progress {
     margin: 20px 40px;
     width: 900px;
 }
-
-
+.column.is-one-fifth {
+    margin: 20px auto;
+    padding: 0 20px;
+    border: solid;
+    border-radius: 4px;
+    border-color: #710000;
+    height: 200px;
+}
+.column.is-one-fifth h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+    color: black;
+}
+.column.is-one-fifth h4 {
+    font-family: 'Bangers', cursive;
+}
+.column.is-one-fifth button {
+    font-size: 65px;
+    border: none;
+    border-radius: 7px;
+    background-color: #a3a3a3;
+    color: white;
+    cursor: pointer;
+}
+.columns.routine-buttons {
+    /* display: none; */
+}
 </style>
