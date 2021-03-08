@@ -211,7 +211,7 @@ export default {
 </script>
 
 <style>
-.routine {
+/* .routine {
     width: 60vw;
     margin: 20px auto;
     border: solid;
@@ -245,9 +245,9 @@ export default {
     display: inline-block;
     width: 500px;
     margin: 0 20px;
-}
+} */
 
-.input.box {
+/* .input.box {
     width: 400px;
     font-family: 'Montserrat', sans-serif;
     padding: 1px 10px;
@@ -255,7 +255,7 @@ export default {
 .input.smaller {
     width: 250px;
     font-family: 'Montserrat', sans-serif;
-}
+} */
 button.button {
     background-color: #ffba08;
     color: white;

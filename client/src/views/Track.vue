@@ -5,7 +5,7 @@
           <div class="sized">
             <div class="workouts">
                 <h2>My Workouts</h2>
-                <router-link to="/routine" tag="a">+ Add Activity</router-link>
+                <router-link to="/createworkout" tag="a">+ Add Activity</router-link>
                 <br><br>
                 <div class="columns routine-buttons">
                     <div class="column is-one-fifth routine1">

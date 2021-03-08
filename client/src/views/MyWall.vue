@@ -82,6 +82,7 @@
 <script>
     import ContentCard from "../components/ContentCard";
     import FriendsSmall from "../components/FriendsSmall"
+    
 export default {
     data: ()=> ({
         newPost: {
