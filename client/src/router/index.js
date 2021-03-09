@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
+import Feed from '@/views/Feed.vue'
 import MyWall from '@/views/MyWall.vue'
 import Login from '@/views/Login.vue'
+import Session from '@/models/Session'
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
+  { path: '/', name: 'Feed', component: Feed },
   { path: '/mywall', name: 'My Wall', component: MyWall },
   { path: '/login', name: 'Login', component: Login },
-  { path: '/routine', name: 'Routine', component: () => import(/* webpackChunkName: "about" */ '../views/Routine.vue')},
   { path: '/createworkout', name: 'Create Workout', component: () => import(/* webpackChunkName: "about" */ '../views/CreateWorkout.vue')},
   { path: '/settings', name: 'Settings', component: () => import(/* webpackChunkName: "about" */ '../views/Settings.vue')},
   { path: '/about', name: 'About', component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')},
@@ -23,5 +23,16 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach( (to, from, next) =>{
+  console.log({ from, to })
+  if(to.path == '/mywall' && !Session.user) {
+     next('/login') 
+  }
+  else {
+     next();
+  }
+} )
+
 
 export default router
