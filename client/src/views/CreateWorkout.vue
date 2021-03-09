@@ -1,6 +1,6 @@
 <template>
   <div class="create-workout">
-      <form action="">
+      <form @submit.prevent="createWorkout">
           <div class="field">
             <label class="label">Title</label>
                 <input class="input box" type="text" placeholder="Give Your Workout a Name" v-model="title">
@@ -26,34 +26,12 @@
         </div>
 
         <div class="field5">
-            <AddRow :delete-Row="deleteRow" v-for="(row, i) in rows" :key="i" :is="row"/>
+            <AddRow @delete-row="deleteRow(i)" v-for="(row, i) in workouts" :key="i" :is="row"/>
         </div>
-
-        <!-- <div class="field5" v-for="(workout, w) in rows" :key='w'>
-            <div class="ex">
-                <input type="text" class="input" v-model="name">
-            </div>
-            <div class="wg">
-                <input type="text" class="input" v-model="weight">
-            </div>
-            <div class="rp">
-                <input type="text" class="input" v-model="reps">
-            </div>
-            <div class="st">
-                <input type="text" class="input" v-model="sets">
-            </div>
-            <div class="nt">
-                  <input type="text" class="input" v-model="notes">
-            </div>
-            <div class="dl">
-                  <button @click.prevent="deleteRow" class="input"><i class="fas fa-trash-alt"></i></button>
-            </div>
-        </div> -->
-        
 
         <div class="field6">
             <div class="complete">
-              <button @click.prevent="createWorkout">Complete Workout</button>
+              <button type="submit">Complete Workout</button>
             </div>
             <div class="cancel">
              <button type="button" class="cancelWorkout">Cancel Workout</button>
@@ -68,48 +46,73 @@
 
 export default {
   data: ()=> ({
+    id: 0,
     title: '',
     date: '',
-    workout: {
-      name: '',
-      weight: '',
-      reps: '',
-      sets: '',
-      notes: ''
-    },
-    rows: [],
-    workouts: [],
+    row: [
+      {
+        id: 0,
+        name: '',
+        weight: '',
+        reps: '',
+        sets: '',
+        notes: ''
+      }
+    ],
+    workouts: [
+      {
+        row: { }
+      }
+    ],
+    routine: [
+      {
+        id: '',
+        title: '',
+        date: '',
+        workouts: { }
+      }
+    ],
   }),
   methods: {
-    // IT WORKS!!!!
     addRow() {
-      this.rows.push(AddRow)
+      this.workouts.push(AddRow)
     },
     deleteRow(i) {
-      this.rows.splice(AddRow, i)
+      this.workouts.splice(i, 1)
     }
   },
-  //   createWorkout() {
-  //     if(!this.title) {
-  //       this.title = this.date
-  //       return
-  //     }      
-
-  //     const newWorkout = {
-  //       title: this.title,
-  //       date: this.date,
-  //       workout: {
-  //         name: this.name,
-  //         weight: this.weight,
-  //         reps: this.reps,
-  //         sets: this.sets,
-  //         notes: this.notes
-  //       }
-  //     }
+    createRoutine() {
+      // if(!this.title) {
+      //   this.title = this.date
+      //   return
+      // }      
+      // this.rows.forEach(i => {
+      //   this.id = this.id++
+      //   i.name 
+      // });
+      // const newWorkout = {
+      //   title: this.title,
+      //   date: this.date,
+      //   workout.forEach(element => {
+      //     name: this.name,
+      //     weight: this.weight,
+      //     reps: this.reps,
+      //     sets: this.sets,
+      //     notes: this.notes
+      //   });
+        
+        // workout: {
+        //   name: this.name,
+        //   weight: this.weight,
+        //   reps: this.reps,
+        //   sets: this.sets,
+        //   notes: this.notes
+        // }
+      // }
   //     this.workouts.push(newWorkout)
   //     console.log(this.workouts)
-  //   }
-  // },
+    
+  },
   components: {
     AddRow
   }
@@ -169,10 +172,6 @@ label {
     color: white;
     font-weight: bolder;
 }
-/* .field5 {
-  margin: 5px 15px 15px 15px;
-  display: block;
-} */
 .field6 {
   margin: 80px 200px 0 200px;
 }

@@ -3,7 +3,7 @@
     <h2>Welcome to Runtime Fitness!</h2>
     <p>We hope you're ready to take on the fitness journey of a lifetime. Here you can upload your fitness #Goals, #Gains, #Tips and #Journey!</p>
     <br> 
-    <p>There are so many ways to stay motivated including <a href=#>Share with Friends</a>, <a href=#>Challenge Friends</a> and by checking the <a href=#>Local Challenges</a> page.</p>
+    <!-- <p>There are so many ways to stay motivated including <a href=#>Share with Friends</a>, <a href=#>Challenge Friends</a> and by checking the <a href=#>Local Challenges</a> page.</p> -->
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .about {
   margin: 20px 40px;
 }

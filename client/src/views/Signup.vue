@@ -1,5 +1,8 @@
 <template>
   <div class="signup">
+    <div class="welcome">
+        <h1>First time here? Welcome!</h1>
+    </div>
     <div class="back-info">
         <h1>Background Information</h1>
     </div>
@@ -103,7 +106,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped> 
 .signup {
     text-align: center;
     color: black;
@@ -112,9 +115,15 @@ export default {
     border-radius: 7px;
     border-color: #b6b6b6;
 }
+.welcome h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 40px;
+    text-align: left;
+    margin: 20px 0 0 80px;
+}
 .back-info h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     margin: 10px 0 0 0;
 }
 .register h1 {

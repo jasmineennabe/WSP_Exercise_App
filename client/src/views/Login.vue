@@ -1,8 +1,8 @@
 <template>
   <div class="login-popup" id="loginForm" v-if="!Session.user">
-        <form action="/action_page.php" class="login-container">
+        <form @submit='login' class="login-container">
         <button type="button" class="close" @click='close'>
-            X
+            <i class="fas fa-times"></i>
         </button>
 
         <h1>Login</h1>
@@ -17,7 +17,7 @@
         </label>
         <input class="pswinput" type="password" placeholder="Enter Password" name="psw" required>
         <br>
-        <button type="submit" class="loginbtn" @click='login'>
+        <button type="submit" class="loginbtn">
             Login
         </button>
         <br> 
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-    import Session from "../models/Session"
+    import Session, { Login } from "../models/Session"
 export default {
     data(){
         return {
@@ -35,14 +35,12 @@ export default {
     },
     methods: {
         login(){
-            this.Session.user = { name: "Jasmine" }
+            Login()
+            
         },
         close(){
-            window.history.back()
+            window.history.back();
         },
-        toMyPage(){
-            this.router.navigate(['/mywall'])
-        }
     }
 }
 </script>
@@ -104,11 +102,14 @@ export default {
     float: right;
     text-align: right;
     background-color: white;
-    color: black;
+    color: #707070;
     padding: 6px;
     margin-left: 400px;
-    margin-right: 10px;
+    margin-right: 30px;
     margin-top: 0;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
   }
   
   .loginbtn {
