@@ -2,18 +2,16 @@
   <div class="friends-panel">
     <article class="panel">
         <p class="panel-heading">
-            Friends
+            Find Friends
         </p>
         <p class="ptabs">
-            <a>Top Friends</a>
+            <a>My Friends</a>
             <a>Groups</a>
             <a>Chat</a>
-            <!-- <a>Sources</a> -->
-            <!-- <a>Forks</a> -->
         </p>
-        <div class="panel-block">
+        <div class="panel-block search">
             <p class="control has-icons-left">
-            <input class="input" type="text" placeholder="Search">
+            <input @submit="findFriends" class="input" type="search" placeholder="Search" v-model="handle">
             <span class="icon is-left">
                 <i class="fas fa-search" aria-hidden="true"></i>
             </span>
@@ -49,11 +47,31 @@
 
 <script>
 export default {
-
+    data: ()=> ({
+        handle: '',
+        users: [],
+        friends: [
+            {
+                user: { }
+            }
+        ]
+    }),
+    methods: {
+        // searchFriends(handle) {
+        //     if(this.handle == handle) {
+        //         return user;
+        //     }
+        // }
+        
+    }
 }
 </script>
 
-<style>
+<style scoped>
+article.panel {
+    width: 300px;
+    margin-left: 25px;
+}
 .friends-panel {
     margin: 20px;
 }
@@ -66,7 +84,7 @@ p.panel-heading {
     font-weight: 400;
 }
 p.ptabs {
-    text-align: center;
+    text-align: left;
     margin-top: 10px;
 }
 .friends-panel a {
@@ -75,6 +93,12 @@ p.ptabs {
     font-family: 'Montserrat', sans-serif;
     padding-left: 10px;
     padding-right: 10px;
-
 }
+input.input {
+    width: 250px;
+}
+button {
+    cursor: pointer;
+}
+
 </style>

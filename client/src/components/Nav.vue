@@ -11,8 +11,12 @@
         <a class="appTitle">Runtime Fitness</a>
 
         <router-link class="navbar-item" tag="a" to="/">
-            Home    
+            Feed    
         </router-link> 
+
+        <router-link class="navbar-item" tag="a" to="/mywall">
+            My Wall    
+        </router-link>
 
         <router-link class="navbar-item" tag="a" to="/track">
             Track    
@@ -42,9 +46,7 @@
                     </li>
                 </ul>
             </div>
-        </div>  
-        <MyWallBadge />
-                
+        </div>                  
       </div>
       <div class="navbar-end">
         <LoginBadge />
@@ -55,7 +57,6 @@
 
 <script>
   import LoginBadge from "./LoginBadge";
-  import MyWallBadge from "./MyWallBadge";
 
 export default {
     data: ()=> ({
@@ -63,7 +64,6 @@ export default {
     }),
     components: {
       LoginBadge,
-      MyWallBadge
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="add-row">
-        <!-- <div class="field5" v-for="(workout, w) in rows" :key='w'> -->
+        <div class="field5" v-for="(row, w) in workouts" :key='w'>
             <div class="ex">
                 <input type="text" class="input" v-model="name">
             </div>
@@ -17,37 +17,30 @@
                   <input type="text" class="input" v-model="notes">
             </div>
             <div class="dl">
-                  <button @click.prevent="$emit(delete-Row)" class="input"><i class="fas fa-trash-alt"></i></button>
+                  <button @click.prevent="$emit('delete-row')" class="input"><i class="fas fa-trash-alt"></i></button>
             </div>
-        <!-- </div> -->
+        </div>
     </div>
 </template>
 
 <script>
 export default {
     data: ()=> ({
-        newId: 0,
-        // row: [
-        //     {
-                id: '',
-                name: '',
-                weight: '',
-                reps: '',
-                sets: '',
-                notes: '',
-            // }
-        // ],
-        // rows: []
-    }),
-    // methods: {
-    //     deleteRow(index) {
-    //         this.rows.splice(index, 1)
-    //     }    
-    // }
+      workouts: [
+        {
+          id: 0,
+          name: '',
+          weight: '',
+          reps: '',
+          sets: '',
+          notes: '',
+        }
+      ]    
+    })
 }
 </script>
 
-<style>
+<style scoped>
 .field5 {
   margin: 5px 15px 15px 15px;
   display: block;

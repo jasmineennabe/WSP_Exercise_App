@@ -18,7 +18,8 @@
 </template>
 
 <script>
-    import Session from "../models/Session"
+    import Session, { Login, Logout } from "../models/Session"
+
 export default {
     data(){
         return {
@@ -27,10 +28,10 @@ export default {
     },
     methods: {
         login(){
-            this.Session.user = { name: "Jasmine" }
+            Login();
         },
         logout(){
-            this.Session.user = null
+            Logout();
         }
     }
 }

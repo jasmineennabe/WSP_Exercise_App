@@ -1,6 +1,7 @@
 <template>
   <div class="card">
     <div class="card-content">
+      <button @click="$emit('delete-post')"><i class="fas fa-times"></i></button>
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
@@ -53,7 +54,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  button {
+    margin-right: -30px;
+    float: right;
+    border: none;
+    background-color: white;
+    color: #707070;
+    font-size: 20px;
+  }
+  button i {
+    cursor: pointer;
+  }
   .card-footer a {
     color: black;
     font-family: 'Bangers', cursive;
