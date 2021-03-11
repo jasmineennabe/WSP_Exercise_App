@@ -39,7 +39,7 @@ export default {
             user: { }
         },
         posts: [],
-        showContentCreation: false
+        showContentCreation: false,
     }),
     mounted() {
         this.posts = GetMyPosts();

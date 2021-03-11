@@ -15,6 +15,10 @@
                   <div class="setting-item">
                       <button>Support</button>
                   </div>
+                  <div class="setting-item" v-if="Session.user='jasmineennabe'">
+                      <button>Admin</button>
+                  </div>
+                  <div v-else></div>
               </div>
           </div>
           <div class="column settings-content">
@@ -25,8 +29,13 @@
 </template>
 
 <script>
+    import Session from "../models/Session"
 export default {
-
+    data(){
+        return {
+            Session
+        }
+    },
 }
 </script>
 
