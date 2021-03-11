@@ -11,7 +11,7 @@
         </p>
         <div class="panel-block search">
             <p class="control has-icons-left">
-            <input @submit="findFriends" class="input" type="search" placeholder="Search" v-model="handle">
+            <input class="input" type="search" placeholder="Search" v-model="handle">
             <span class="icon is-left">
                 <i class="fas fa-search" aria-hidden="true"></i>
             </span>
@@ -21,41 +21,59 @@
             <span class="panel-icon">
             <i class="fas fa-user-friends" aria-hidden="true"></i>
             </span>
-            <!-- bulma -->
+            John Doe
         </a>
         <a class="panel-block">
             <span class="panel-icon">
             <i class="fas fa-user-friends" aria-hidden="true"></i>
             </span>
-            <!-- marksheet -->
+            Jane Doe
         </a>
         <a class="panel-block">
             <span class="panel-icon">
             <i class="fas fa-user-friends" aria-hidden="true"></i>
             </span>
-            <!-- minireset.css -->
+            Jack Doe
         </a>
         <a class="panel-block">
             <span class="panel-icon">
             <i class="fas fa-user-friends" aria-hidden="true"></i>
             </span>
-            <!-- jgthms.github.io -->
+            
         </a>
     </article>
   </div>
 </template>
 
 <script>
+    // import Friends from './Friends.vue'
+
 export default {
     data: ()=> ({
         handle: '',
         users: [],
         friends: [
             {
-                user: { }
-            }
+                name: 'John Doe',
+                handle: "@johndoe",
+                pic: 'https://randomuser.me/api/portraits/men/1.jpg',
+            },
+            { 
+                name: 'Jane Doe',
+                handle: "@janedoe",
+                pic: 'https://randomuser.me/api/portraits/women/67.jpg',
+            },
+            { 
+                name: 'Jack Doe',
+                handle: "@jackdoe",
+                pic: 'https://randomuser.me/api/portraits/men/32.jpg',
+            },
+        
         ]
     }),
+    components: {
+        // Friends,
+    },
     methods: {
         // searchFriends(handle) {
         //     if(this.handle == handle) {
@@ -100,5 +118,7 @@ input.input {
 button {
     cursor: pointer;
 }
-
+.panel-icon {
+    margin-right: 20px;
+}
 </style>

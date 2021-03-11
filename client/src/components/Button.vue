@@ -18,11 +18,11 @@ button {
     border-radius: 4px;
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     font-weight: bolder;
     background-color: #710000;
     cursor: pointer;
-    width: 109px;
+    width: 115px;
 }
 </style>

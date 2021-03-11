@@ -56,7 +56,6 @@ export default {
 
 <style scoped>
   button {
-    margin-right: -30px;
     float: right;
     border: none;
     background-color: white;
