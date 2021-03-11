@@ -1,6 +1,6 @@
 <template>
   <div class="create-workout">
-      <form @submit.prevent="createWorkout">
+      <form @submit.prevent="createRoutine">
           <div class="field">
             <label class="label">Title</label>
                 <input class="input box" type="text" placeholder="Give Your Workout a Name" v-model="title">
@@ -22,11 +22,11 @@
             </div>
         </div>
         <div class="field4">
-            <button type="button" @click="addRow">Add Exercise</button>
+            <button type="button" @click.prevent="addRow">Add Exercise</button>
         </div>
 
         <div class="field5">
-            <AddRow @delete-row="deleteRow(i)" v-for="(row, i) in workouts" :key="i" :is="row"/>
+            <AddRow @delete-row="deleteRow(i)" v-for="(row, i) in workouts" :key="i" :row="row" />
         </div>
 
         <div class="field6">
@@ -34,10 +34,12 @@
               <button type="submit">Complete Workout</button>
             </div>
             <div class="cancel">
-             <button type="button" class="cancelWorkout">Cancel Workout</button>
+             <router-link tag="button" to="/track">Cancel Workout</router-link>
             </div>
         </div>
       </form>
+      <pre>{{workouts}}</pre>
+      <pre>{{routines}}</pre>
   </div>
 </template>
 
@@ -46,72 +48,48 @@
 
 export default {
   data: ()=> ({
-    id: 0,
+    rId: 0,
+    wId: 1,
     title: '',
     date: '',
-    row: [
-      {
-        id: 0,
+    row: {
+        id: '',
         name: '',
         weight: '',
         reps: '',
         sets: '',
         notes: ''
-      }
-    ],
-    workouts: [
-      {
-        row: { }
-      }
-    ],
-    routine: [
-      {
-        id: '',
-        title: '',
-        date: '',
-        workouts: { }
-      }
-    ],
+      },
+    workouts: [],
+    routines: [],
   }),
   methods: {
     addRow() {
-      this.workouts.push(AddRow)
+      this.row.id=this.rId++
+      this.workouts.push({...this.row });
     },
     deleteRow(i) {
       this.workouts.splice(i, 1)
-    }
-  },
+    },
+  
+    cancelWorkout () {
+      window.history.back()
+    },
     createRoutine() {
-      // if(!this.title) {
-      //   this.title = this.date
-      //   return
-      // }      
-      // this.rows.forEach(i => {
-      //   this.id = this.id++
-      //   i.name 
-      // });
-      // const newWorkout = {
-      //   title: this.title,
-      //   date: this.date,
-      //   workout.forEach(element => {
-      //     name: this.name,
-      //     weight: this.weight,
-      //     reps: this.reps,
-      //     sets: this.sets,
-      //     notes: this.notes
-      //   });
-        
-        // workout: {
-        //   name: this.name,
-        //   weight: this.weight,
-        //   reps: this.reps,
-        //   sets: this.sets,
-        //   notes: this.notes
-        // }
-      // }
-  //     this.workouts.push(newWorkout)
-  //     console.log(this.workouts)
-    
+      if(!this.title) {
+        this.title = this.date
+        return
+      }     
+      this.routines.push({
+        id: this.wId++,
+        title: this.title,
+        date: this.date,
+        workouts: this.workouts,
+      })
+        this.title=null;
+        this.date=null;
+        this.workouts= []
+    } 
   },
   components: {
     AddRow

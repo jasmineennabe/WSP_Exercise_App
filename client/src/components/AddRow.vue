@@ -1,20 +1,20 @@
 <template>
     <div class="add-row">
-        <div class="field5" v-for="(row, w) in workouts" :key='w'>
+        <div class="field5">
             <div class="ex">
-                <input type="text" class="input" v-model="name">
+                <input type="text" class="input" v-model="row.name">
             </div>
             <div class="wg">
-                <input type="text" class="input" v-model="weight">
+                <input type="text" class="input" v-model="row.weight">
             </div>
             <div class="rp">
-                <input type="text" class="input" v-model="reps">
+                <input type="text" class="input" v-model="row.reps">
             </div>
             <div class="st">
-                <input type="text" class="input" v-model="sets">
+                <input type="text" class="input" v-model="row.sets">
             </div>
             <div class="nt">
-                  <input type="text" class="input" v-model="notes">
+                  <input type="text" class="input" v-model="row.notes">
             </div>
             <div class="dl">
                   <button @click.prevent="$emit('delete-row')" class="input"><i class="fas fa-trash-alt"></i></button>
@@ -28,15 +28,13 @@ export default {
     data: ()=> ({
       workouts: [
         {
-          id: 0,
-          name: '',
-          weight: '',
-          reps: '',
-          sets: '',
-          notes: '',
-        }
-      ]    
-    })
+          row: { }
+        }   
+      ]
+    }),
+    props: {
+      row: Object
+    }
 }
 </script>
 
