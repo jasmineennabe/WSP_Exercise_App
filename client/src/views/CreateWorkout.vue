@@ -38,13 +38,13 @@
             </div>
         </div>
       </form>
-      <pre>{{workouts}}</pre>
-      <pre>{{routines}}</pre>
+      <pre>{{ routines }}</pre>
   </div>
 </template>
 
 <script>
   import AddRow from '../components/AddRow'
+  // import { CreateRoutine } from '../models/Routines'
 
 export default {
   data: ()=> ({
@@ -65,20 +65,22 @@ export default {
   }),
   methods: {
     addRow() {
-      this.row.id=this.rId++
+      this.row.id=this.rId++;
       this.workouts.push({...this.row });
     },
     deleteRow(i) {
       this.workouts.splice(i, 1)
     },
-  
-    cancelWorkout () {
+    cancelWorkout() {
       window.history.back()
     },
+    // addRoutine(){
+    //   CreateRoutine();
+    // }
+
     createRoutine() {
       if(!this.title) {
         this.title = this.date
-        return
       }     
       this.routines.push({
         id: this.wId++,
