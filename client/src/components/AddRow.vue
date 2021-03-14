@@ -26,11 +26,7 @@
 <script>
 export default {
     data: ()=> ({
-      workouts: [
-        {
-          row: { }
-        }   
-      ]
+      row: { }
     }),
     props: {
       row: Object

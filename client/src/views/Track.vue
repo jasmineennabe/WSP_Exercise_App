@@ -7,26 +7,9 @@
                 <h2>My Workouts</h2>
                 <router-link to="/createworkout" tag="a">+ Add Activity</router-link>
                 <br><br>
-                <div class="columns routine-buttons">
-                    <div class="column is-one-fifth routine1">
-                        <h3>View Workout</h3>
-                        <h4>Assoc. Title</h4>
-                        <button><i class="fas fa-dumbbell"></i></button>
-                    </div>
-                    <div class="column is-one-fifth routine2">
-                        <h3>View Workout</h3>
-                        <h4>Assoc. Title</h4>
-                        <button><i class="fas fa-dumbbell"></i></button>
-                    </div>
-                    <div class="column is-one-fifth routine3">
-                        <h3>View Workout</h3>
-                        <h4>Assoc. Title</h4>
-                        <button><i class="fas fa-dumbbell"></i></button>
-                    </div>
-                    <div class="column is-one-fifth routine4">
-                        <h3>View Workout</h3>
-                        <h4>Assoc. Title</h4>
-                        <button><i class="fas fa-dumbbell"></i></button>
+                <div class="routine-buttons"> 
+                    <div class="button-row">
+                        <TrackRoutineBadge v-for="(routine, id) in routines" :key="id" :routines="routines" :text=routine.title />  
                     </div>
                 </div>
             </div>
@@ -34,9 +17,22 @@
             <div class="track-fitness">
                 <h2>Track</h2>
                     <p>Weekly Progress</p>
-                    <progress class="progress is-warning" value="1" max="7"></progress>
-                    <caption>Woohoo! You've worked out _ days this week so far!
-                        <br>Keep it up!
+                    <progress class="progress is-warning" :value="progressBar" max="7"></progress>
+                    <caption class="caption" v-if='progressBar === 0'>
+                        <h3>Time to get to work!</h3>
+                        <h4>You got this</h4>
+                    </caption>
+                    <caption class="caption" v-else-if='progressBar === 1'>
+                        <h3>Nice start! {{ progressBar }} day under your belt this week!</h3>
+                        <h4>Keep it up</h4>
+                    </caption>
+                    <caption class="caption" v-else-if='progressBar > 1 && progressBar < 4'>
+                        <h3>Woohoo! You've worked out {{ progressBar }} days this week so far!</h3>
+                        <h4>Look at you go</h4>
+                    </caption>
+                    <caption class="caption" v-else>
+                        <h3>{{ progressBar }} days this week, you're a machine!</h3>
+                        <h4>There's no stopping you</h4>
                     </caption>
             </div>
           </div>
@@ -51,16 +47,27 @@
 
 
 <script>
+    import TrackRoutineBadge from "../components/TrackRoutineBadge"
+    import { GetRoutines } from "../models/Routines"
+
+
 export default {
     data:()=> ({
-    //    progressBar = [1, 2, 3, 4, 5, 6, 7] 
+        routines: [],
+        progressBar: 1,
     }),
     methods: {
-       progressCap() {
-           
-
-           
-       }
+        addToProgress() {
+            // if(this.routines.length){
+            //     this.progressBar++
+            // }
+        },
+    },
+    mounted() {
+        this.routines = GetRoutines();
+    },
+    components: {
+        TrackRoutineBadge,
     }
 
 }
@@ -95,11 +102,11 @@ export default {
     border-radius: 5px;
     border-color: #a3a3a3;
     height: 400px;
+    padding: 20px;
 }
 .workouts h2 {
     font-family: 'Bebas Neue', sans-serif;
     color: black;
-    margin-top: 15px;
     text-align: center;
     font-size: 30px;
     clear: right;
@@ -130,7 +137,18 @@ export default {
     margin-top: 30px;
     color: #710000;
 }
-.track-fitness caption {
+.track-fitness h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.track-fitness h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+}
+caption.caption {
+    text-align: center;
+    margin: 0 auto;
     display: inline;
 }
 progress.progress {
@@ -162,7 +180,12 @@ progress.progress {
     color: white;
     cursor: pointer;
 }
-.columns.routine-buttons {
-    /* display: none; */
+.button-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 200px;
+    width: 1015px;
+    text-align: left;
+    overflow: hidden;
 }
 </style>
