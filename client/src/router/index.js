@@ -12,6 +12,7 @@ const routes = [
   { path: '/mywall', name: 'My Wall', component: MyWall },
   { path: '/login', name: 'Login', component: Login },
   { path: '/createworkout', name: 'Create Workout', component: () => import(/* webpackChunkName: "about" */ '../views/CreateWorkout.vue')},
+  { path: '/myroutines', name: 'My Routines', component: () => import(/* webpackChunkName: "about" */ '../views/MyRoutines.vue')},
   { path: '/settings', name: 'Settings', component: () => import(/* webpackChunkName: "about" */ '../views/Settings.vue')},
   { path: '/about', name: 'About', component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')},
   { path: '/signup', name: 'Sign Up', component: () => import(/* webpackChunkName: "about" */ '../views/Signup.vue')},

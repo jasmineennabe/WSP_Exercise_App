@@ -1,6 +1,6 @@
 <template>
   <div class="adminbadge">
-    <div class="if-admin" v-if="Session.user='jasmineennabe'">
+    <div class="if-admin" v-if="Session.user.handle='@jasmineennabe'">
         <router-link to="/settings"><i class="fas fa-user-lock"></i></router-link>
     </div>
     <div class="if-not" v-else>
