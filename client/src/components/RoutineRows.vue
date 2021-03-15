@@ -1,20 +1,20 @@
 <template>
     <div class="routines-row">
-        <div class="field5" v-for="(row, id) in routines" :key="id">
+        <div class="field5"> 
             <div class="ex">
-                <input type="text" class="input" placeholder="name" :value="row.workouts">
+                <input type="text" class="input" placeholder="name" :value="row.name"> 
             </div>
             <div class="wg">
-                <input type="text" class="input" placeholder="weight"> <!-- :value="routines.workouts.weight"> -->
+                <input type="text" class="input" placeholder="weight" :value="row.weight"> 
             </div>
             <div class="rp">
-                <input type="text" class="input" placeholder="reps"> <!-- :value="routines.workouts.reps"> -->
+                <input type="text" class="input" placeholder="reps" :value="row.reps"> 
             </div>
             <div class="st">
-                <input type="text" class="input" placeholder="sets"> <!-- :value="routines.workouts.sets"> -->
+                <input type="text" class="input" placeholder="sets" :value="row.sets"> 
             </div>
             <div class="nt">
-                  <input type="text" class="input" placeholder="notes"> <!-- :value="routines.workouts.notes"> -->
+                  <input type="text" class="input" placeholder="notes" :value="row.notes"> 
             </div>
             <div class="dl">
                   <button @click.prevent="$emit('delete-row')" class="input"><i class="fas fa-trash-alt"></i></button>
@@ -24,21 +24,11 @@
 </template>
 
 <script>
-  import { GetRoutines } from '../models/Routines'
 
 export default {
-    data: ()=> ({
-      routines: []
-    }),
-    mounted() {
-      this.routines = GetRoutines();
-    },
-    // props: {
-    //   workout: Object
-    // }
     props: {
-        // routines: Array,
-    //     workout: Array,
+      routine: Object,
+      row: Object,
     }
 }
 </script>

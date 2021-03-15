@@ -2,12 +2,12 @@
     <div class="routine">
         <div class="field">
             <label class="label">Title</label>
-                <input class="input box" type="text" placeholder="Give Your Workout a Name">
+                <input class="input box" type="text" placeholder="Give Your Workout a Name" :value="routine.title">
         </div>
 
         <div class="field2">
             <label class="label">Date</label>
-                <input class="input smaller" type="date" :value="routines.date"> 
+                <input class="input smaller" type="date" :value="routine.date"> 
         </div>
 
         <div class="field3">
@@ -20,37 +20,29 @@
                 <label class="input-label nt">Notes</label>          
             </div>
         </div>
-        <!-- <div class="field4">
-            <button type="button" @click.prevent="addRow">Add Exercise</button>
-        </div> -->
 
-        <div class="field5"> <!-- @delete-row="deleteRow(i)" -->
-            <RoutineRows v-for="(row, workoutId) in routines" :key="workoutId" />
+        <div class="field5"  >  
+            <RoutineRows v-for="(row, id) in routine.workouts" :key="id" :row="row" @delete-row="deleteRow(id)" />
         </div>
     </div>
 </template>
 
 <script>
     import RoutineRows from '../components/RoutineRows'
-    import { GetRoutines } from '../models/Routines'
 
 export default {
-    data: ()=> ({
-        // workout: {},
-        routines: [],
-    }),
-     mounted() {
-        this.routines = GetRoutines();
+    methods: {
+      deleteRow(id) {
+            this.routine.workouts.splice(id, 1)
+        }  
     },
     components: {
         RoutineRows,
     },
     props: {
-        // routines: Array,
+        routine: Object,
+        row: Object,
     }
-    // props: {
-    //     routine: Object,
-    // }
 }
 </script>
 

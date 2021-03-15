@@ -54,7 +54,7 @@
 export default {
     data:()=> ({
         routines: [],
-        progressBar: 1,
+        progressBar: 4,
     }),
     methods: {
         addToProgress() {

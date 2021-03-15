@@ -1,12 +1,14 @@
 <template>
     <div class="workout-button">
-        <button @click="$emit('toggleWorkoutButton')">{{ text }}</button>
+        <button @click="$emit('toggleWorkoutButton')" :routine="routine">{{ text }}</button>
     </div>
 </template>
 
 <script>
 export default {
+    
     props: {
+        routine: Object,
         text: String,
     }
 }
@@ -14,8 +16,7 @@ export default {
 
 <style scoped>
 button {
-    width: 140px;
-    height: 40px;
+    padding: 10px;
     border: solid;
     border-color: #710000;
     font-family: 'Bebas Neue', sans-serif;

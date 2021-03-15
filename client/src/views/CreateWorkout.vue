@@ -74,10 +74,6 @@ export default {
     cancelWorkout() {
       window.history.back()
     },
-    // addRoutine(){
-    //   CreateRoutine();
-    // }
-
     createRoutine() {
       if(!this.title) {
         this.title = this.date

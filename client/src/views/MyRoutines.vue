@@ -4,10 +4,8 @@
           <div class="header">
             My Routines
           </div>  
-          <div class="routine" v-for="(routine, id) in routines" :key="id">
-              {{ routine.id }} {{ routine.title }}
-              <MyRoutinesBadge :routines="routines" :text="showRoutine ? 'Close' : routine.title" />
-              {{ routine.workouts }}
+          <div class="routine" v-for="(routine, id) in routines" :key="id" >
+              <MyRoutinesBadge :routine="routine" /> 
           </div>
       </div>
   </div>
@@ -20,6 +18,7 @@
 export default {
     data: ()=> ({
         routines: [],
+        routine: {},
     }),
     mounted() {
         this.routines = GetRoutines();
@@ -28,7 +27,7 @@ export default {
         MyRoutinesBadge,
     },
     props: {
-        showRoutine: Boolean,
+        text: String,
     }
 }
 </script>
