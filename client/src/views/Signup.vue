@@ -64,14 +64,14 @@
     <div class="cq1">
         <input type="checkbox" name="question1">
             <label for="question1">
-                <b>Would you like to receive text notifications?</b>
+                Would you like to receive text notifications?
             </label>
     </div>
 
     <div class="cq2">
         <input type="checkbox" name="question2">
             <label for="question2">
-                <b>Would you like to receive email notifications?</b>    
+                Would you like to receive email notifications?  
             </label>
     </div>
 
@@ -86,7 +86,7 @@
     <div class="agree">
         <input type="checkbox" name="terms" required>
         <label for="terms">
-            <b>I agree to the Terms & Conditions</b>
+            I agree to the Terms & Conditions
         </label>
     </div>
 
@@ -194,5 +194,8 @@ export default {
 }
 .cancel:hover {
     color: #710000;
+}
+input {
+    font-family: 'Montserrat', sans-serif;
 }
 </style>
