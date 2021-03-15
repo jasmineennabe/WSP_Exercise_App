@@ -38,7 +38,6 @@
             </div>
         </div>
       </form>
-      <pre>{{ routines }}</pre>
   </div>
 </template>
 
