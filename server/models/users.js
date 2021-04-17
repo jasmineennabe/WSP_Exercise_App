@@ -93,9 +93,9 @@ module.exports.Login =  async (handle, password) =>{
 
     const token = jwt.sign(data, JWT_SECRET)
 
-    return { user, token };
+    return { data, token };
 }
-module.exports.FromJWT = async (token) => {
+module.exports.FromJWT = (token) => {
     try {
         const user = jwt.verify(token, JWT_SECRET);
         return user;
