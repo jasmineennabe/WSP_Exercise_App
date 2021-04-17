@@ -58,6 +58,12 @@
 <script>
   import ContentCard from '../components/ContentCard';
   import { GetMyFeed } from "../models/Posts";
+  import { api } from "../models/myFetch";
+
+    ( async ()=>{
+        const actualItem = await api("posts");
+        console.log({actualItem});
+    })()
 
 export default {
   name: 'Home',
