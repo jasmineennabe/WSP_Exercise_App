@@ -41,8 +41,8 @@ export default {
         posts: [],
         showContentCreation: false,
     }),
-    mounted() {
-        this.posts = GetMyPosts();
+    async mounted() {
+        this.posts = await GetMyPosts();
     },
     components: {
         Button,
