@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Buefy from "buefy";
 import App from './App.vue'
 import router from './router'
 import FriendsSmall from './components/FriendsSmall'
@@ -9,6 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import './sass/main.scss'
 import 'chart.js'
 
+Vue.use(Buefy);
 Vue.component('FriendsSmall', FriendsSmall);
 Vue.config.productionTip = false
 
