@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Feed from '@/views/Feed.vue'
 import MyWall from '@/views/MyWall.vue'
 import Login from '@/views/Login.vue'
+import Users from '@/views/Users'
 import Session from '@/models/Session'
 
 Vue.use(VueRouter)
@@ -11,6 +12,7 @@ const routes = [
   { path: '/', name: 'Feed', component: Feed },
   { path: '/mywall', name: 'My Wall', component: MyWall },
   { path: '/login', name: 'Login', component: Login },
+  { path: '/users', name: 'Users', component: Users },
   { path: '/createworkout', name: 'Create Workout', component: () => import(/* webpackChunkName: "about" */ '../views/CreateWorkout.vue')},
   { path: '/myroutines', name: 'My Routines', component: () => import(/* webpackChunkName: "about" */ '../views/MyRoutines.vue')},
   { path: '/settings', name: 'Settings', component: () => import(/* webpackChunkName: "about" */ '../views/Settings.vue')},
