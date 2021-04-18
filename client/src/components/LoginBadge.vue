@@ -9,7 +9,7 @@
             </router-link>
         </div>
         <div class="greeting" v-else>
-            <h1 class="greeting-name">Hello, Jasmine</h1>
+            <h1 class="greeting-name"> Hello {{Session.user.firstName}}</h1>
             (<a class="greeting-logout" @click.prevent="logout">
                 Log out
             </a>)
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import Session, { Login, Logout } from "../models/Session"
+    import Session, { Logout } from "../models/Session"
     import AdminBadge from "../components/AdminBadge"
 
 export default {
@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         login(){
-            Login();
+            this.$router.push('Login');
         },
         logout(){
             Logout();
