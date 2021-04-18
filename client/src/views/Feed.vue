@@ -17,7 +17,7 @@
         </div>
       </div>
     
-      <b-carousel :autoplay="false" indicator-custom :indicator-inside="false" :overlay="gallery" @click="switchGallery(true)">
+      <!-- <b-carousel :autoplay="false" indicator-custom :indicator-inside="false" :overlay="gallery" @click="switchGallery(true)">
           <b-carousel-item v-for="(item, i) in 20" :key="i">
               <a class="image ">
                   <img :src="getImgUrl(i)">
@@ -29,7 +29,7 @@
                   <img :draggable="false" :src="getImgUrl(props.i)" :title="props.i">
               </figure>
           </template>
-      </b-carousel> 
+      </b-carousel>  -->
     </div>
 </template>
 
