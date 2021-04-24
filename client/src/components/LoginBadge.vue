@@ -9,7 +9,11 @@
             </router-link>
         </div>
         <div class="greeting" v-else>
-            <h1 class="greeting-name"> Hello {{Session.user.firstName}}</h1>
+            <h1 class="greeting-name"> 
+                Hello 
+                 <img :src="Session.user.profile" />
+                {{Session.user.firstName}}
+            </h1>
             (<a class="greeting-logout" @click.prevent="logout">
                 Log out
             </a>)

@@ -8,9 +8,9 @@
             <h1>Login</h1>
         
             <label for="handle">
-                <b>Handle</b>
+                <b>Username</b>
             </label>
-            <input class="handleinput" type="text" placeholder="Enter Handle" name="handle" required v-model="handle">
+            <input class="handleinput" type="text" placeholder="Enter Username" name="handle" required v-model="handle">
             
             <br>
             
@@ -22,20 +22,19 @@
             <br>
             
             <button type="submit" class="loginbtn">
-                Login
+              Login
             </button>
-            <br> 
 
-            <fb:login-button 
-              scope = "public_profile, email"
-              onlogin = "checkLoginState();">
-            </fb:login-button>
+            <button class="fblogin" @click.prevent="loginFB">
+              <i class="fab fa-facebook-square"></i>
+              Login with Facebook
+            </button>
       </form>
     </div>
 </template>
 
 <script>
-    import { Login } from "../models/Session"
+    import Session, { Login } from "../models/Session"
 
 export default {
     data: ()=>({
@@ -45,6 +44,25 @@ export default {
     methods: {
         login(){
             Login(this.handle, this.password);
+        },
+        loginFB(){
+            /*global FB */
+            FB.login(function(response) {
+                console.log({response})
+                    if (response.status === 'connected') {
+                        FB.api('me?fields=name,email,picture', function(myInfo){
+                            console.log({myInfo})
+                            Session.user = { 
+                                firstName: myInfo.name,
+                                handle: myInfo.email,
+                                profile: myInfo.picture.data.url
+                          }
+                        })
+                        
+                    } else {
+                        // The person is not logged into your webpage or we are unable to tell. 
+                    }
+            }, {scope: 'public_profile,email'});
         },
         close(){
             window.history.back();
@@ -63,19 +81,15 @@ export default {
     width: 50vw;
     color: black;
   } 
-  .pswlabel b{
-    margin-right: 20px;
-    margin-left: -15px;
-  }
   .handleinput {
-    margin-left: 28px;
+    margin-left: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
     font-family: 'Montserrat', sans-serif;
   }
   .pswinput {
     margin-top: 10px;
-    margin-left: -10px;
+    margin-left: 7px;
     margin-bottom: 20px;
     font-family: 'Montserrat', sans-serif;
   }
@@ -119,7 +133,6 @@ export default {
     font-size: 20px;
     cursor: pointer;
   }
-  
   .loginbtn {
     background-color: #d90429;
     color: white;
@@ -133,14 +146,14 @@ export default {
   }
   
   /* Set a style for the submit/login button */
-  .login-container .btn {
+  /* .login-container .btn {
     background-color: #ffba08;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     opacity: 0.8;
-  }
+  } */
   
   /* Add some hover effects to buttons */
   .login-container .btn:hover, .loginbtn:hover  {
@@ -149,8 +162,19 @@ export default {
   }
   .close:hover {
     color: black;
-    background-color: rgba(71, 71, 71, .3);
+    background-color: rgba(57, 74, 175, 0.3);
   }
-
+  .fblogin {
+    background-color: #4267B2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+  } 
 
 </style>

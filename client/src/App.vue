@@ -6,9 +6,14 @@
   
     <div>
         <router-view/>
-    </div>
-          
-      <!-- <Footer />   -->
+    </div>  
+
+      <div id="fb-root"></div>
+      <div class="fb-customerchat"
+        attribution="page_inbox"
+        page_id="101077812136919">
+      </div>
+
   </div>
 </template>
 
@@ -46,8 +51,5 @@ export default {
 
 
 <style lang="scss">
-
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Montserrat&display=swap');
-</style>
-
-
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Montserrat&display=swap');
+</style>      
