@@ -17,7 +17,7 @@
         </div>
       </div>
     
-      <!-- <b-carousel :autoplay="false" indicator-custom :indicator-inside="false" :overlay="gallery" @click="switchGallery(true)">
+      <b-carousel :autoplay="false" indicator-custom :indicator-inside="false" :overlay="gallery" @click="switchGallery(true)">
           <b-carousel-item v-for="(item, i) in 20" :key="i">
               <a class="image ">
                   <img :src="getImgUrl(i)">
@@ -29,13 +29,14 @@
                   <img :draggable="false" :src="getImgUrl(props.i)" :title="props.i">
               </figure>
           </template>
-      </b-carousel>  -->
+      </b-carousel>  
     </div>
 </template>
 
 <script>
     import ContentCard from '../components/ContentCard';
-    import { GetMyFeed } from "../models/Posts";
+    import { GetMyFeed, AddPost, DeletePost } from "../models/Posts";
+    import Session from "../models/Session";
 
 export default {
   name: 'Home',
@@ -58,6 +59,15 @@ export default {
         } else {
             return document.documentElement.classList.remove('is-clipped')
         }
+    },
+    async addPost(){
+      const post = await AddPost(this.newPost)
+      this.posts.unshift(post);
+      this.newPost = { user: Session.user }
+    }, 
+    async deletePost(i){
+      await DeletePost(i);
+      this.posts.splice(i, 1);
     }
   },
   components: {

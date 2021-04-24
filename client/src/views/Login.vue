@@ -1,6 +1,6 @@
 <template>
-  <div class="login-popup" id="loginForm" v-if="!Session.user">
-        <form @submit='login' class="login-container">
+    <div class="login-popup" id="loginForm">
+      <form @submit='login' class="login-container">
             <button type="button" class="close" @click.prevent='close'>
                 <i class="fas fa-times"></i>
             </button>
@@ -25,7 +25,7 @@
                 Login
             </button>
             <br> 
-        </form>
+      </form>
     </div>
 </template>
 
@@ -39,8 +39,7 @@ export default {
     }),
     methods: {
         login(){
-            Login(this.handle, this.password)
-            
+            Login(this.handle, this.password);
         },
         close(){
             window.history.back();

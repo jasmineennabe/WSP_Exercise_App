@@ -2,7 +2,7 @@
 
 const express = require('express');
 const model = require('../models/users');
-const { LoginRequired  } = require('./security');
+const { LoginRequired } = require('./security');
 
 const app = express.Router();
 

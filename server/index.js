@@ -23,7 +23,7 @@ app
     .use( async (req, res, next)=>{ 
       const token = req.headers.authorization?.split(' ')[1];
       req.user = token && await usersModel.FromJWT(token);
-      req.user = { isAdmin: true }
+      // req.user = { isAdmin: true }
       next();
     }) 
 
@@ -34,7 +34,14 @@ app
         // last item
     .get('*', (req, res) => {
       res.sendFile( path.join(__dirname, '../docs/index.html' ) );
-})
+    })
+
+    .use((error, req, res, next)=>{
+      console.error(error);
+
+        res.status(error.code || 500 );
+        res.send( { msg: error.msg });
+    })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

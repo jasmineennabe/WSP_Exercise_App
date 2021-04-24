@@ -1,6 +1,7 @@
 
 
 import { ToastProgrammatic as toastr } from "buefy";
+import router from "../router";
 import { api } from "./myFetch";
 
 const Session = {
@@ -18,8 +19,10 @@ export async function Login(handle, password){
     console.log(Session.user);
     toastr.open({
         type: 'is-success',
-        message: `Welcome ${Session.user.firstName}`
-    })
+        message: `Welcome ${ Session.user.firstName }`
+    });
+
+    router.push(Session.nextRoute ?? '/feed')
 }
 
 export function Logout() {
