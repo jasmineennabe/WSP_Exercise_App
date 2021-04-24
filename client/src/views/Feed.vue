@@ -39,8 +39,11 @@
     import Session from "../models/Session";
 
 export default {
-  name: 'Home',
+  //name: 'Home',
   data:()=> ({
+    newPost: {
+      user: Session.user
+    },
     posts: [],
     gallery: false
   }),
