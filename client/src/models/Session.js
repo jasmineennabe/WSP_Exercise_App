@@ -6,6 +6,8 @@ import { api } from "./myFetch";
 
 const Session = {
     user: null,
+    token: null,
+    nextRoute: null,
     message: []
 }
 
@@ -22,7 +24,7 @@ export async function Login(handle, password){
         message: `Welcome ${ Session.user.firstName }`
     });
 
-    router.push(Session.nextRoute ?? '/feed')
+    router.push(Session.nextRoute ?? '/')
 }
 
 export function Logout() {
