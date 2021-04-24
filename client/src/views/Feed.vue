@@ -44,8 +44,8 @@ export default {
     posts: [],
     gallery: false
   }),
-  mounted() {
-      this.posts = GetMyFeed();
+  async mounted() {
+      this.posts = await GetMyFeed();
   },
   methods: {
     getImgUrl(value) {
