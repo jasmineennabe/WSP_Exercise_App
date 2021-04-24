@@ -9,9 +9,8 @@
             </router-link>
         </div>
         <div class="greeting" v-else>
-            <h1 class="greeting-name"> 
-                Hello 
-                 <img :src="Session.user.profile" />
+            <h1 class="greeting-name">  
+                 <img :src="Session.user.profile" height="40px" width="40px" />
                 {{Session.user.firstName}}
             </h1>
             (<a class="greeting-logout" @click.prevent="logout">
@@ -52,14 +51,13 @@ export default {
 }
 .greeting {
     font-family: 'Bangers', cursive;
-    margin-bottom: 5px;
     font-size: 25px;
     color: black;
 }
 h1.greeting-name {
     color: black;
     font-family: 'Bangers', cursive;
-    margin: 10px 0;
+    margin: 5px 0;
     font-size: 25px;
     display: inline-block;
 }
