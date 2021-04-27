@@ -1,108 +1,130 @@
 <template>
   <div class="signup">
-    <div class="welcome">
-        <h1>First time here? Welcome!</h1>
-    </div>
-    <div class="back-info">
-        <h1>Background Information</h1>
-    </div>
+    <form @submit.prevent="register"> 
+        <div class="welcome">
+            <h1>First time here? Welcome!</h1>
+        </div>
+        <div class="back-info">
+            <h1>Background Information</h1>
+        </div>
 
-        <div class="reg-entry">
-            <label for="firstName">
-                <b>First Name</b>
-            </label>
-            <input type="text" placeholder="John" name="firstName" required>
+            <div class="reg-entry">
+                <label for="firstName">
+                    <b>First Name</b>
+                </label>
+                <input type="text" placeholder="John" name="firstName" required v-model="user.firstName">
+            </div>
+            
+            <div class="reg-entry">
+                <label for="lastName">
+                    <b>Last Name</b>
+                </label>
+                <input type="text" placeholder="Doe" name="lastName" required v-model="user.lastName">
+            </div>
+            
+            <div class="reg-entry">
+                <label for="birthday">
+                    <b>Date of Birth</b>
+                </label>
+                <input type="date" placeholder="01/02/1993" name="birthday" required v-model="user.dob">
+            </div>
+
+        <div class="register">
+            <h1>Account Registration</h1>
+        </div>
+
+            <div class="reg-entry">
+                <label for="username">
+                    <b>Username</b>
+                </label>
+                <input type="text" placeholder="Create a Username" name="username" required v-model="user.handle">
+            </div>
+
+            <div class="reg-entry"> 
+                <label for="email">
+                    <b>Email</b>
+                </label>
+                <input type="text" placeholder="Enter Email" name="email" required v-model="user.email">
+            </div>
+
+            <div class="reg-entry">
+                <label for="psw">
+                    <b>Password</b>
+                </label>
+                <input type="password" placeholder="Enter Password" name="psw" required v-model="user.password">
+            </div>
+
+        <!-- IF YOU HAVE TIME ADD MOBILE AND NOTIFICATIONS/TEXT MESSAGING CAPABILITIES -->
+            <!-- <div class="reg-entry">
+                <label for="phone">
+                    <b>Mobile #</b>
+                </label>
+                <input type="tel" placeholder="(888)888-8888" name="phone">
+            </div>
+        
+        
+        <div class="cq1">
+            <input type="checkbox" name="question1">
+                <label for="question1">
+                    Would you like to receive text notifications?
+                </label>
+        </div>
+
+        <div class="cq2">
+            <input type="checkbox" name="question2">
+                <label for="question2">
+                    Would you like to receive email notifications?  
+                </label>
+        </div> -->
+
+        <div class="terms-heading">
+            <h4>Terms & Conditions</h4>
+        </div>
+
+        <div class="terms-container">
+            <h5>A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. </h5>
         </div>
         
-        <div class="reg-entry">
-            <label for="lastName">
-                <b>Last Name</b>
+        <div class="agree">
+            <input type="checkbox" name="terms" required>
+            <label for="terms">
+                I agree to the Terms & Conditions
             </label>
-            <input type="text" placeholder="Doe" name="lastName" required>
-        </div>
-        
-        <div class="reg-entry">
-            <label for="birthday">
-                <b>Date of Birth</b>
-            </label>
-            <input type="date" placeholder="01/02/1993" name="birthday" required>
         </div>
 
-    <div class="register">
-        <h1>Account Registration</h1>
-    </div>
+        <button type="submit" class="registerbtn"> <!-- onclick="closeSignUp()" -->
+            Register
+        </button>
 
-        <div class="reg-entry">
-            <label for="username">
-                <b>Username</b>
-            </label>
-            <input type="text" placeholder="Create a Username" name="username" required>
-        </div>
-
-        <div class="reg-entry"> 
-            <label for="email">
-                <b>Email</b>
-            </label>
-            <input type="text" placeholder="Enter Email" name="email" required>
-        </div>
-
-        <div class="reg-entry">
-            <label for="psw">
-                <b>Password</b>
-            </label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-        </div>
-
-        <div class="reg-entry">
-            <label for="phone">
-                <b>Mobile #</b>
-            </label>
-            <input type="tel" placeholder="(888)888-8888" name="phone">
-        </div>
-    
-    
-    <div class="cq1">
-        <input type="checkbox" name="question1">
-            <label for="question1">
-                Would you like to receive text notifications?
-            </label>
-    </div>
-
-    <div class="cq2">
-        <input type="checkbox" name="question2">
-            <label for="question2">
-                Would you like to receive email notifications?  
-            </label>
-    </div>
-
-    <div class="terms-heading">
-        <h4>Terms & Conditions</h4>
-    </div>
-
-    <div class="terms-container">
-        <h5>A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. A bunch of terms. </h5>
-    </div>
-    
-    <div class="agree">
-        <input type="checkbox" name="terms" required>
-        <label for="terms">
-            I agree to the Terms & Conditions
-        </label>
-    </div>
-
-    <button type="submit" class="registerbtn" onclick="closeSignUp()">
-        Register
-    </button>
-
-    <router-link tag="button" class="cancel" to="/">
-        Cancel
-    </router-link>
+        <router-link tag="button" class="cancel" to="/">
+            Cancel
+        </router-link>
+    </form>
   </div> 
 </template>
 
 <script>
-export default {
+    import { Register } from "../models/Users"
 
+export default {
+    data: ()=> ({
+        user: {
+            firstName: null,
+            lastName: null,
+            dob: null,
+            handle: null,
+            email: null,
+            password: null,
+            pic: null,
+            isAdmin: false,
+            friends: [],
+        }
+    }),
+    methods: {
+        register() {
+            Register(this.user)
+        },
+    }
 }
 </script>
 

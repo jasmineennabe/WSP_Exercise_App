@@ -1,6 +1,6 @@
 <template>
     <div class="login-popup" id="loginForm">
-      <form @submit='login' class="login-container">
+      <form @submit.prevent="login" class="login-container">
             <button type="button" class="close" @click.prevent='close'>
                 <i class="fas fa-times"></i>
             </button>
@@ -19,7 +19,7 @@
             </label>
             <input class="pswinput" type="password" placeholder="Enter Password" name="psw" required v-model="password">
             
-            <br>
+            <br>   
             
             <button type="submit" class="loginbtn">
               Login
@@ -38,7 +38,7 @@
 
 export default {
     data: ()=>({
-        handle: null,
+        handle: null, 
         password: null
     }),
     methods: {
@@ -58,7 +58,6 @@ export default {
                                 profile: myInfo.picture.data.url
                           }
                         })
-                        
                     } else {
                         // The person is not logged into your webpage or we are unable to tell. 
                     }

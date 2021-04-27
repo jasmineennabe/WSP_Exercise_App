@@ -7,9 +7,10 @@
                 <h2>My Workouts</h2>
                 <router-link to="/createworkout" tag="a">+ Add Activity</router-link>
                 <br><br>
+                
                 <div class="routine-buttons"> 
                     <div class="button-row">
-                        <TrackRoutineBadge v-for="(routine, id) in routines" :key="id" :routines="routines" :text=routine.title />  
+                        <TrackRoutineBadge v-for="(routine, id) in routines" :key="id" :routine="routine" :text=routine.title />  
                     </div>
                 </div>
             </div>
@@ -48,11 +49,12 @@
 
 <script>
     import TrackRoutineBadge from "../components/TrackRoutineBadge"
-    import { GetRoutines } from "../models/Routines"
+    import { GetMyRoutines } from "../models/Routines"
 
 
 export default {
     data:()=> ({
+        // routine: {},
         routines: [],
         progressBar: 4,
     }),
@@ -63,8 +65,9 @@ export default {
             // }
         },
     },
-    mounted() {
-        this.routines = GetRoutines();
+    async mounted() {
+        this.routines = await GetMyRoutines();
+        // console.log("routines: ", this.routines)
     },
     components: {
         TrackRoutineBadge,

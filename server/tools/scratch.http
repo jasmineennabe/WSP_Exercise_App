@@ -1,0 +1,38 @@
+http://localhost:3000/posts
+
+###
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "firstName": "Jasmine",
+    "lastName": "Ennabe",
+    "handle": "jas",
+    "pic": "https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg",
+    "password": "itsme_jasmineennabe",
+    "isAdmin": "true"
+}
+
+###
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "handle": "jasmineennabe",
+    "password": "itsme_jasmineennabe"
+}
+
+###
+POST http://localhost:3000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKYXNtaW5lIiwibGFzdE5hbWUiOiJFbm5hYmUiLCJoYW5kbGUiOiJqYXNtaW5lZW5uYWJlIiwicGljIjoiaHR0cHM6Ly95Y2hlZi5maWxlcy5iYmNpLmNvLnVrLzk3Nng1NDkvcDA3cnl5eWouanBnIiwiaXNBZG1pbiI6dHJ1ZSwiZm9sbG93aW5nIjpbeyJoYW5kbGUiOiJ0aGVyb2NrIiwiaXNBcHByb3ZlZCI6dHJ1ZX0seyJoYW5kbGUiOiJhcm5vbGQiLCJpc0FwcHJvdmVkIjp0cnVlfSx7ImhhbmRsZSI6ImppbGxtaWNoYWVscyIsImlzQXBwcm92ZWQiOnRydWV9XSwiaWF0IjoxNjE5MzgzMzkwfQ.YsL2vjUQrN-HaE8wDPnz5l8BMHX1cD_Ahd7f0JtF9cc
+
+{
+    "src": "https://media1.popsugar-assets.com/files/thumbor/vKNa7cWT-LcJKVuNeRgYO97JWIo/fit-in/550x550/filters:format_auto-!!-:strip_icc-!!-/2012/01/01/2/192/1922729/2029132756a5a1d5_studio.jpg",
+    "alt": "Yoga studio",
+    "caption": "So excited to get back into yoga",
+}
+
+###
+GET http://localhost:3000/users/
+Content-Type: application/json

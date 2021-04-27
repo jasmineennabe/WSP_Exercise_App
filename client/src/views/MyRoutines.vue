@@ -13,7 +13,7 @@
 
 <script>
     import MyRoutinesBadge from "../components/MyRoutinesBadge"
-    import { GetRoutines } from "../models/Routines"
+    import { GetMyRoutines } from "../models/Routines"
 
 export default {
     data: ()=> ({
@@ -21,7 +21,7 @@ export default {
         routine: {},
     }),
     mounted() {
-        this.routines = GetRoutines();
+        this.routines = GetMyRoutines();
     },
     components: {
         MyRoutinesBadge,

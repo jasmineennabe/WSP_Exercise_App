@@ -1,24 +1,19 @@
 <template>
   <div class="my-wall">
     <div class="columns">
-      <div class="column is-one-quarter">  
-          <FriendsSmall />  
+      <div class="column is-one-quarter">
+          <MyProfile :postNumber="posts.length" />
+           
       </div>
 
-      <div class="column">
-          <div v-show="showContentCreation"> 
-              <ContentCreation :newPost="newPost" @addPost="addPost()" />
-          </div>
-            
+      <div class="column">            
         <div class="content-item" v-for="(post, i) in posts" :key="i">
             <ContentCard @delete-post="deletePost" :post="post" />
         </div>
       </div>
+
       <div class="column is-one-quarter">  
-        <!-- <div class="content-item"> -->
-            <div class="content-item new-post-creator"> 
-              <Button @toggleContentCreation="toggleContentCreation" :text="showContentCreation ? 'Close' : 'New Post'"/>
-          </div> 
+          <FriendsSmall :text="'My Friends'" /> 
             <!-- <ContentCard :post="newPost" /> -->
         <!-- </div>  -->
       </div>
@@ -27,17 +22,17 @@
 </template>
 
 <script>
-    import Button from "../components/Button"
     import ContentCard from "../components/ContentCard";
-    import ContentCreation from '../components/ContentCreation.vue';
     import FriendsSmall from "../components/FriendsSmall"
-    import { GetMyPosts } from "../models/Posts"
+    import MyProfile from '../components/MyProfile.vue';
+    import { GetMyPosts } from "../models/Posts" 
     
 export default {
     data: ()=> ({
         newPost: {
             user: { }
         },
+        post: { },
         posts: [],
         showContentCreation: false,
     }),
@@ -45,10 +40,9 @@ export default {
         this.posts = await GetMyPosts();
     },
     components: {
-        Button,
         ContentCard,
         FriendsSmall,
-        ContentCreation,
+        MyProfile,
     },
     methods: {
         addPost(){
@@ -68,6 +62,7 @@ export default {
 <style>
 .my-wall {
     display: block;
+    margin-top: 20px;
 }
 .content-item {
     margin: 20px 40px;
@@ -123,10 +118,12 @@ button.post-btn {
     margin-left: 280px;
     width: 100px;
     cursor: pointer;
-    /* float: left; */
 }
 div.column {
     padding: 0;
-    width: 33vw;
+}
+div.content-item {
+    width: 75%;
+    margin: 10px auto;
 }
 </style>

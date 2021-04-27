@@ -38,12 +38,13 @@
             </div>
         </div>
       </form>
+      <pre>{{workouts}}</pre>
   </div>
 </template>
 
 <script>
   import AddRow from '../components/AddRow'
-  // import { CreateRoutine } from '../models/Routines'
+  import { AddRoutine } from '../models/Routines'
 
 export default {
   data: ()=> ({
@@ -86,7 +87,10 @@ export default {
         this.title=null;
         this.date=null;
         this.workouts= []
-    } 
+        
+        AddRoutine(this.routines)
+    },
+      
   },
   components: {
     AddRow
