@@ -8,7 +8,7 @@ const list = [
         alt: 'Placeholder image',
         caption: 'Check out these hot biceps',
         time: Date(),
-        user_handle: '@arnold',
+        user_handle: 'arnold',
         isPublic: true,
     },
     {
@@ -16,7 +16,7 @@ const list = [
         alt: 'Placeholder image',
         caption: 'Getting pumped up filming for my new movie "Lift"',
         time: Date(),
-        user_handle: '@therock',
+        user_handle: 'therock',
         isPublic: true,
     },
     {
@@ -24,7 +24,7 @@ const list = [
         alt: 'Placeholder image',
         caption: 'Daily fitness check. Are you guys keeping yourself accountable?',
         time: Date(),
-        user_handle: '@jillmichaels',
+        user_handle: 'jillmichaels',
         isPublic: true,
     },
     {
@@ -32,7 +32,7 @@ const list = [
         alt: 'Placeholder image',
         caption: 'Check out my new gym!',
         time: Date(),
-        user_handle: '@jasmineennabe',
+        user_handle: 'jasmineennabe',
         isPublic: true,
     },
     {
@@ -40,7 +40,7 @@ const list = [
         alt: 'Placeholder image',
         caption: 'SO excited to get back into yoga!',
         time: Date(),
-        user_handle: '@jasmineennabe'
+        user_handle: 'jasmineennabe'
     },
 ];
 
@@ -53,19 +53,20 @@ const list = [
         return listWithOwner();
     }
 
-    module.exports.GetWall = (handle)=> {
+    module.exports.GetWall = (handle)=> { 
         return listWithOwner().filter(post=> post.user_handle == handle);
     };
-
+ 
     module.exports.GetFeed = (handle)=> listWithOwner()
-        .filter(post=> users.GetByHandle(handle).following.some(f=> f.handle == post.user_handle && f.isApproved) );
-
+        .filter(post=> users.GetByHandle(handle).friends.some(f=> f.handle == post.user_handle && f.isApproved) );
+    
+      
     module.exports.Get = (post_id)=> list[post_id];
-
+ 
     module.exports.Add = (post)=> {
-        if(!post.user_handle){
-            throw "Post must have an owner"
-        }
+        // if(!post.user_handle){
+        //     throw "Post must have an owner"
+        // }
         list.push(post);
         return { ...post };
     }

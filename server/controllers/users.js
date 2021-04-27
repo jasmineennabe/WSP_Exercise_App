@@ -6,14 +6,26 @@ const { LoginRequired } = require('./security');
 
 const app = express.Router();
 
-    app
+    app 
         .get('/', LoginRequired, (req, res)=> {
             res.send( model.GetAll() ); 
             console.log(req.headers) ;
         })
         .get('/:user_id', LoginRequired, (req, res)=> res.send( model.Get(req.params.user_id) ))
+        // .get('/:handle', (req, res)=> {
+        //     res.send( model.GetByHandle(req.params.handle))
+        // })
+        .get('/friends', LoginRequired, (req, res)=> {
+            res.send( model.GetFriends(req.user.handle))
+        })
+        .get('/friends/:handle', (req, res)=> {
+            res.send( model.GetFriends(req.params.handle))
+        })
         .post('/', LoginRequired, (req, res)=> {
             res.send( model.Add(req.body) );
+        })
+        .post('/addFriend/:user_handle', (req, res)=> {
+            res.send( model.AddFriend(req.user.handle && req.params.user_handle))
         })
         .post('/register', (req, res, next)=> {
             model.Register(req.body)
@@ -28,6 +40,5 @@ const app = express.Router();
         .patch('/:user_id', LoginRequired, (req, res)=> res.send( model.Update( req.params.user_id, req.body ) ) )
         .delete('/:user_id', LoginRequired, (req, res)=> res.send( model.Delete(req.params.user_id) ) )
 
-
-
+    
 module.exports = app;
