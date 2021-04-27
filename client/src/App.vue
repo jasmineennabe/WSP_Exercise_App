@@ -8,11 +8,11 @@
         <router-view/>
     </div>  
 
-      <div id="fb-root"></div>
+      <!-- <div id="fb-root"></div>
       <div class="fb-customerchat"
         attribution="page_inbox"
         page_id="101077812136919">
-      </div>
+      </div> -->
 
   </div>
 </template>
