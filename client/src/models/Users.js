@@ -12,9 +12,9 @@ import Session from "../models/Session"
         return api( `users/${user_id}` );
     } 
 
-    export function GetFriends(handle) {
-        return api(`users/friends/${handle}`)
-    }
+    // export function GetFriends(handle) {
+    //     return api(`users/friends/${handle}`)
+    // }
 
     export function AddFriend(user_handle) {
         return api (`users/addFriend/${user_handle}`)

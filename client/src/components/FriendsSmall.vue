@@ -2,8 +2,8 @@
   <div class="friends-panel"> 
     <article class="panel">
         <div class="panel-heading">
-            {{ text }}
-            <!-- Find Friends -->
+            <!-- {{ text }} -->
+            Find Friends
             <p v-if="showFriends" @click.prevent="toggleFriends" class="toggle">
                 <i class="fas fa-minus toggleBtn"></i>
             </p>

@@ -18,13 +18,13 @@ const app = express.Router();
         .get('/friends', LoginRequired, (req, res)=> {
             res.send( model.GetFriends(req.user.handle))
         })
-        .get('/friends/:handle', (req, res)=> {
-            res.send( model.GetFriends(req.params.handle))
-        })
+        // .get('/friends/:handle', (req, res)=> {
+        //     res.send( model.GetFriends(req.params.handle))
+        // })
         .post('/', LoginRequired, (req, res)=> {
             res.send( model.Add(req.body) );
         })
-        .post('/addFriend/:user_handle', (req, res)=> {
+        .post('/addFriend/:user_handle', LoginRequired, (req, res)=> {
             res.send( model.AddFriend(req.user.handle && req.params.user_handle))
         })
         .post('/register', (req, res, next)=> {

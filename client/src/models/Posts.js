@@ -8,7 +8,7 @@ export function GetMyPosts() {
 
 export function GetPostsForUser(handle) {
     console.log(handle)
-    return api( `posts/${handle}` );
+    return api( "posts/" + handle );
 }
 
 export function GetMyFeed() {

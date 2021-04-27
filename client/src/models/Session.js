@@ -34,7 +34,7 @@ export function Logout() {
 
 export function toastError(msg){
     toastr.open({
-        message: msg,
+        message: msg.toString(), //added .toString()
         queue: false,
         type: 'is-danger'
     })
