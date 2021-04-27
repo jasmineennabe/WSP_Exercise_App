@@ -9,7 +9,7 @@ export function api(url, data, method){
     let promise;
     
     const headers = { authorization: `bearer ${Session.token}` }
-
+ 
     if(data){
         promise = fetch(API_ROOT + url, {
             method: method ?? 'POST', // *GET, POST, PUT, DELETE, etc.

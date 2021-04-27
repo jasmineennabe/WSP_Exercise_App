@@ -14,21 +14,22 @@ const Session = {
 export default Session;
 
 export async function Login(handle, password){
-    const {user, token} = await api('users/login', { handle, password })
-    Session.user = user;
+    const { user, token } = await api('users/login', { handle, password })
+    Session.user = user; 
     Session.token = token;
- 
+
     console.log(Session.user);
     toastr.open({
         type: 'is-success',
-        message: `Welcome ${ Session.user.firstName }`
+        message: `Welcome ${Session.user.firstName}`
     });
 
-    router.push(Session.nextRoute ?? '/')
+    router.push(Session.nextRoute ?? '/feed')
 }
 
 export function Logout() {
     Session.user = null
+    location.reload()
 }
 
 export function toastError(msg){
