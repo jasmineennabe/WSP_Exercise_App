@@ -1,6 +1,6 @@
 <template>
   <div class="adminbadge">
-    <div class="if-admin" v-if="Session.user.isAdmin=true">
+    <div class="if-admin" v-if="Session.user.isAdmin==true">
         <router-link to="/settings"><i class="fas fa-user-lock"></i></router-link>
     </div>
     <div class="if-not" v-else>
@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script> 
     import Session from "../models/Session"
 export default {
     data(){
@@ -21,12 +21,12 @@ export default {
 </script>
 
 <style scoped>
-div.adminbadge {
-    width: 28px;
-    margin-right: 1px;
-    display: inline-block;
-}
-i.fas.fa-user-cog, i.fas.fa-user-lock {
-    font-size: 22px;
-}
+    div.adminbadge {
+        width: 28px;
+        margin-right: 1px;
+        display: inline-block;
+    }
+    i.fas.fa-user-cog, i.fas.fa-user-lock {
+        font-size: 22px;
+    }
 </style>

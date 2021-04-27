@@ -11,7 +11,8 @@
           </figure> 
         </div>
         <div class="media-content">
-          <p class="title is-4" @click.prevent="$emit('goToProfile', `${post.user.handle}`)">
+
+          <p class="title is-4">
               {{post.user.firstName}} {{post.user.lastName}}
           </p>
           <p class="subtitle is-6">@{{post.user.handle}}</p>
@@ -58,11 +59,12 @@
 export default {
     data() {
       return {
-            Session
+            Session,
         }
     },
     props: {
-      post: Object
+      post: Object,
+      user: Object,
     }
 };
 </script>

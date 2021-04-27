@@ -8,9 +8,9 @@
     <div class="navbar-menu" :class="{ 'is-active': isActive }" @click.prevent="isActive = !isActive">
       <div class="navbar-start">
         <i class="fas fa-fire-alt navbar-item"></i>
-        <a class="appTitle">Runtime Fitness</a>
+        <router-link class="appTitle" tag="a" to="/">Runtime Fitness</router-link>
 
-        <router-link class="navbar-item" tag="a" to="/">
+        <router-link class="navbar-item" tag="a" to="/feed">
             Feed    
         </router-link> 
 
@@ -60,7 +60,7 @@
 
 export default {
     data: ()=> ({
-      isActive:false
+      isActive:false,
     }),
     components: {
       LoginBadge,
@@ -79,7 +79,7 @@ export default {
     color: black;
     padding-right: 0;
 }
-a.appTitle {
+.appTitle {
     font-size: 35px;
     padding-top: 5px;
     padding-left: 5px;

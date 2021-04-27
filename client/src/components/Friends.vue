@@ -1,13 +1,34 @@
 <template>
   <div class="friends">
-      {{ friends.name }}
+      {{ friends.user.firstName }}
   </div>
 </template>
 
 <script>
+    
+
 export default {
     data: ()=> {
-        // friends: [
+        friends: [
+            {
+                user: {
+                    firstName: null,
+                    lastName: null,
+                    handle: null,
+                    pic: null,
+                    isApproved: null,
+                }
+            }
+        ]
+    },
+    async mounted() {
+        this.friends = await GetMyFriends();
+    },
+    props: {
+        friends: Array,
+        user: Object,
+    },
+    // friends: [
         //     {
         //         name: 'John Doe',
         //         handle: "@johndoe",
@@ -25,10 +46,6 @@ export default {
         //     },
         
         // ]
-    },
-    props: {
-        friend: Object
-    }
 }
 </script>
 

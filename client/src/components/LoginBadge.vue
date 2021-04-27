@@ -10,10 +10,10 @@
         </div>
         <div class="greeting" v-else>
             <h1 class="greeting-name">  
-                 <img :src="Session.user.profile" height="40px" width="40px" />
+                 <img :src="Session.user.pic" height="40px" width="40px" />
                 {{Session.user.firstName}}
             </h1>
-            (<a class="greeting-logout" @click.prevent="logout">
+            (<a class="greeting-logout" @click="logout">
                 Log out
             </a>)
             <AdminBadge />

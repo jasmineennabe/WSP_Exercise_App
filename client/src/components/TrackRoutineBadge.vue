@@ -14,6 +14,7 @@
 export default {
     props: {
         text: String,
+        routine: Object,
     }
 }
 </script>

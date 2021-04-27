@@ -25,9 +25,6 @@
 
 <script>
 export default {
-    data: ()=> ({
-      row: { }
-    }),
     props: {
       row: Object
     }
