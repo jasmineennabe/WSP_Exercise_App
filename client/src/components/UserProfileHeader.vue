@@ -27,7 +27,7 @@
                     <p class="subtitle is-6">user.handle </p>
                         <!-- @{{user.handle}}</p>  -->
                 </div> 
-                <i @click.prevent="edit" class="title is-4 fas fa-user-edit"></i>
+                <!-- <i @click.prevent="edit" class="title is-4 fas fa-user-edit"></i> -->
             </div>
             
             <textarea class="bio" placeholder="Tap here to create a bio and tell the world about yourself"></textarea>

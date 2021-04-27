@@ -15,7 +15,7 @@ const app = express.Router();
             }
         } )
         .get('/:handle', (req, res)=> {
-            res.send( model.GetWall(req.params.handle))
+            res.send( model.GetWall(req.user.handle))
         })
         .get('/myPosts', (req, res)=> {
             res.send( model.GetWall(req.user.handle))

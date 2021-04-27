@@ -16,6 +16,7 @@ const list = [
         password: 'itsme_jasmineennabe',
         isAdmin: true,
         friends: [ { user_handle: 'therock', isApproved: true }, { user_handle: 'arnold', isApproved: true }, { user_handle: 'jillmichaels', isApproved: true } ],
+        bio: "Welcome to my page, see ya at the gym :)"
     },
     { 
         firstName: 'Dwayne',
@@ -55,12 +56,7 @@ const list = [
     module.exports.GetAll = ()=> list;
 
     module.exports.Get = (user_id)=> list[user_id];
-
-    // module.exports.GetUser = (handle)=> ( module.exports.GetByHandle(u=> {
-    //     const usr = module.exports.GetByHandle(u.handle == handle);
-    //     return { firstName: usr.firstName, lastName: usr.lastName, handle: usr.handle, pic: usr.pic, friends: usr.friends }
-    // }) );
-
+ 
     module.exports.GetByHandle = (handle)=> ({ ...list.find( (x, i)=> x.handle == handle), password: undefined });
     
     module.exports.GetFriends = (handle)=> ( module.exports.GetByHandle(handle).friends
@@ -129,6 +125,9 @@ const list = [
         }
         if(user.pic){
             oldObj.pic = user.pic;
+        }
+        if(user.bio){
+            oldObj.bio = user.bio;
         }
         return { ...oldObj, password: undefined };
     }

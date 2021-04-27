@@ -38,7 +38,6 @@
             </div>
         </div>
       </form>
-      <pre>{{workouts}}</pre>
   </div>
 </template>
 

@@ -12,9 +12,9 @@ import Session from "../models/Session"
         return api( `users/${user_id}` );
     } 
 
-    // export function GetFriends(handle) {
-    //     return api(`users/friends/${handle}`)
-    // }
+    export function GetFriends(handle) {
+        return api(`users/friend/${handle}`)
+    }
 
     export function AddFriend(user_handle) {
         return api (`users/addFriend/${user_handle}`)
@@ -24,6 +24,10 @@ import Session from "../models/Session"
         return api( 'users/friends' );
     }    
         
+    export function UpdateProfile(user_id, user) {
+        return api( 'users/' + user_id, { user }, "PATCH")
+    }
+
     export async function Register(user){ 
         console.log(user)
         const newUser = await api( 'users/register', user )

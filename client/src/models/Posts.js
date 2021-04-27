@@ -2,13 +2,12 @@
 //import Session from './Session';
 import { api } from "../models/myFetch";
 
-export function GetMyPosts() {
-    return api("posts/myPosts");
-} 
+// export function GetMyPosts() {
+//     return api("posts/myPosts");
+// } 
 
-export function GetPostsForUser(handle) {
-    console.log(handle)
-    return api( "posts/" + handle );
+export function GetMyPosts(handle) {
+    return api( `posts/${handle}` );
 }
 
 export function GetMyFeed() {

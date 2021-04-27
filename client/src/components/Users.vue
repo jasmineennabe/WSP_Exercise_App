@@ -93,6 +93,9 @@ export default Vue.extend({
         text-align: center;
         font-family: 'Bebas Neue', sans-serif;
     }
+    div.column.is-one-fifth {
+        border:none;
+    }
     a {
         color:black;
         cursor: pointer;

@@ -18,9 +18,9 @@ const app = express.Router();
         .get('/friends', LoginRequired, (req, res)=> {
             res.send( model.GetFriends(req.user.handle))
         })
-        // .get('/friends/:handle', (req, res)=> {
-        //     res.send( model.GetFriends(req.params.handle))
-        // })
+        .get('/friend/:handle', (req, res)=> {
+            res.send( model.GetFriends(req.params.handle))
+        })
         .post('/', LoginRequired, (req, res)=> {
             res.send( model.Add(req.body) );
         })
@@ -30,7 +30,7 @@ const app = express.Router();
         .post('/register', (req, res, next)=> {
             model.Register(req.body)
             .then(user=> res.send( user ))
-            .catch(next);
+            .catch(next); 
         })
         .post('/login', (req, res, next)=> { 
             model.Login(req.body.handle, req.body.password)
