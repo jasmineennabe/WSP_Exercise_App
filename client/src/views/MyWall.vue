@@ -14,8 +14,6 @@
 
       <div class="column is-one-quarter">  
           <FriendsSmall :text="'My Friends'" /> 
-            <!-- <ContentCard :post="newPost" /> -->
-        <!-- </div>  -->
       </div>
     </div>
   </div>
