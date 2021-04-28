@@ -11,16 +11,13 @@ const app = express.Router();
             res.send( model.GetAll() ); 
             console.log(req.headers) ;
         })
-        .get('/:user_id', LoginRequired, (req, res)=> res.send( model.Get(req.params.user_id) ))
-        // .get('/:handle', (req, res)=> {
-        //     res.send( model.GetByHandle(req.params.handle))
-        // })
+        .get('/:user_id', LoginRequired, (req, res)=> res.send( model.GetByHandle(req.params.user_id) ))
         .get('/friends', LoginRequired, (req, res)=> {
             res.send( model.GetFriends(req.user.handle))
         })
-        .get('/friend/:handle', (req, res)=> {
-            res.send( model.GetFriends(req.params.handle))
-        })
+        // .get('/friend/:handle', (req, res)=> {
+        //     res.send( model.GetFriends(req.params.handle))
+        // })
         .post('/', LoginRequired, (req, res)=> {
             res.send( model.Add(req.body) );
         })

@@ -59,8 +59,7 @@ const list = [
  
     module.exports.GetFeed = (handle)=> listWithOwner()
         .filter(post=> users.GetByHandle(handle).friends.some(f=> f.handle == post.user_handle && f.isApproved) );
-    
-      
+        
     module.exports.Get = (post_id)=> list[post_id];
  
     module.exports.Add = (post)=> {
@@ -69,7 +68,7 @@ const list = [
         // }
         list.push(post);
         return { ...post };
-    }
+    } 
 
     module.exports.Update = (post_id, post)=> {
         const oldObj = list[post_id];

@@ -7,25 +7,24 @@ import Session from "../models/Session"
         return api('users');
     }
 
+    export function GetMyFriends() {
+        return api( 'users/friends' );
+    }  
+    
     export function GetUserInfo(user_id){
-        console.log("get user info handle: ", user_id)
-        return api( `users/${user_id}` );
+        return api( `users/${user_id}` ); 
     } 
 
-    export function GetFriends(handle) {
-        return api(`users/friend/${handle}`)
-    }
+    // export function GetFriends(handle) {
+    //     return api(`users/friend/${handle}`)
+    // }
 
     export function AddFriend(user_handle) {
         return api (`users/addFriend/${user_handle}`)
-    }
-
-    export function GetMyFriends() {
-        return api( 'users/friends' );
-    }    
+    }  
         
     export function UpdateProfile(user_id, user) {
-        return api( 'users/' + user_id, { user }, "PATCH")
+        return api( `users/${user_id}`, {user}, "PATCH") 
     }
 
     export async function Register(user){ 

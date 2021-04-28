@@ -28,6 +28,7 @@ const list = [
         password: 'im_the_rock47',
         isAdmin: false,
         friends: [ { user_handle: 'jasmineennabe', isApproved: true }, { user_handle: 'arnold', isApproved: true }, { user_handle: 'jillmichaels', isApproved: true } ],
+        bio: "Catch me in the gym or on the big screen"
     },
     {
         firstName: 'Arnold',
@@ -39,6 +40,7 @@ const list = [
         password: 'im_arnold31',
         isAdmin: false,
         friends: [ { user_handle: 'therock', isApproved: true }, { user_handle: 'jasmineennabe', isApproved: true }, { user_handle: 'jillmichaels', isApproved: true } ],
+        bio: "I pick things up and put them down"
     },
     {
         firstName: 'Jillian',
@@ -50,6 +52,7 @@ const list = [
         password: 'im_jill_m14',
         isAdmin: false,
         friends: [ { user_handle: 'therock', isApproved: true }, { user_handle: 'arnold', isApproved: true }, { user_handle: 'jasmineennabe', isApproved: true } ],
+        bio: "Fitness goals brought to you daily"
     },
 ];
 
@@ -62,6 +65,7 @@ const list = [
     module.exports.GetFriends = (handle)=> ( module.exports.GetByHandle(handle).friends
         .filter(f=> f.isApproved).map(f=> {
             const user = module.exports.GetByHandle(f.user_handle);
+            //console.log(user)
             return { firstName: user.firstName, lastName: user.lastName }    
     })); 
     
@@ -111,25 +115,25 @@ const list = [
     // module.exports.LoginFB = async (access_token) {
 
     // }
-    
+
     module.exports.Update = (user_id, user)=> {
-        const oldObj = list[user_id];
+        module.exports.Get(user_id);
         if(user.firstName){
-            oldObj.firstName = user.firstName;
+            list[user_id].firstName = user.firstName;
         }
         if(user.lastName){
-            oldObj.lastName = user.lastName;
+            list[user_id].lastName = user.lastName;
         }
         if(user.handle){
-            oldObj.handle = user.handle;
+            list[user_id].handle = user.handle;
         }
         if(user.pic){
-            oldObj.pic = user.pic;
+            list[user_id].pic = user.pic;
         }
         if(user.bio){
-            oldObj.bio = user.bio;
+            list[user_id].bio = user.bio;
         }
-        return { ...oldObj, password: undefined };
+        return { ...list[user_id], password: undefined };
     }
 
     module.exports.Delete = (user_id)=> {

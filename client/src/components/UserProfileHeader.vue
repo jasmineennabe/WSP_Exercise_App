@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-image">
             <figure class="image is-5by4">
-                 <img class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSnOIBSdg3Kw095g_rQxfdoGqsZoRicX9UqA&usqp=CAU"> <!-- :src="user.pic" :alt="`${Session.user.firstName} ${Session.user.lastName}`" --> 
+                 <img class="is-rounded" :src="user.pic" :alt="`${user.firstName} ${user.lastName}`"> 
             </figure>
         </div>
         <div class="card-content">
@@ -12,7 +12,7 @@
                     <p>Posts</p>
                 </div>
                 <div class="stats">
-                    <p class="num"></p>
+                    <p class="num">{{user.friends.length}}</p>
                     <p>Friends</p>
                 </div>    
             </div> 
@@ -23,14 +23,11 @@
             </div>
             <div class="media">
                 <div class="media-content">
-                     <p class="title is-4"></p> <!--{{Session.user.firstName}} {{Session.user.lastName}}</p>  -->
-                    <p class="subtitle is-6">user.handle </p>
-                        <!-- @{{user.handle}}</p>  -->
+                     <p class="title is-4">{{user.firstName}} {{user.lastName}}</p> 
+                    <p class="subtitle is-6">@{{user.handle}}</p>
                 </div> 
-                <!-- <i @click.prevent="edit" class="title is-4 fas fa-user-edit"></i> -->
             </div>
-            
-            <textarea class="bio" placeholder="Tap here to create a bio and tell the world about yourself"></textarea>
+            <p class="user-bio">"{{user.bio}}"</p>
         </div>
     </div>
 </template>
@@ -80,12 +77,14 @@ export default {
         margin: 5px auto;
     }
     div.media-content {
+        cursor: default;
         margin: 0 auto;
         font-family: 'Montserrat', sans-serif;
         display: inline-block;
         width: 200px;
     }
     div.user-stats {
+        cursor: default;
         display: inline-block;
         color: #710000;
         font-size: 20px;
@@ -120,15 +119,15 @@ export default {
         text-align: center;
         font-family: 'Bangers', cursive;
     }
-    textarea.bio {
-        margin: 0 auto;
-        font-family: 'Montserrat', sans-serif;
-        padding: 5px;
-        width: 295px;
-        height: 100px;
-    }
     i {
         float: right;
         cursor: pointer;
+    }
+    p.user-bio {
+        cursor: default;
+        font-family: 'Montserrat', sans-serif;
+        padding: 5px;
+        font-weight: bolder;
+        font-style: italic;
     }
 </style>

@@ -11,7 +11,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
-  { path: '/feed', name: 'Feed', component: Feed, props: true },
+  { path: '/feed', name: 'Feed', component: Feed},
   { path: '/mywall', name: 'My Wall', component: MyWall },
   { path: '/login', name: 'Login', component: Login },
   { path: '/user/:handle', name: 'UserProfile', component: UserProfile, props: true },

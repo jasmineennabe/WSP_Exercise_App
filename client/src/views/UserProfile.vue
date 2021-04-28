@@ -2,9 +2,9 @@
     <div class="profile-page">
         <div class="columns">
             <div class="column is-one-quarter">
-                <UserProfileHeader :user="user" /> <!-- :postNumber="user.posts.length" -->
+                <UserProfileHeader :user="user" :postNumber="userPosts.length" /> 
             </div>
-
+            
             <div class="column">
                 <div class="content-item" v-for="(post, i) in userPosts" :key="i">
                     <UserContent :post="post" />
@@ -22,7 +22,7 @@
     import UserProfileHeader from '../components/UserProfileHeader'
     import UserContent from '../components/UserContent'
     import { GetUserInfo } from "../models/Users"
-    // import { GetPostsForUser } from "../models/Posts"
+    import { GetPostsForUser } from "../models/Posts"
     import FriendsSmall from '../components/FriendsSmall.vue'
 
 export default {
@@ -30,10 +30,10 @@ export default {
         user: {},
         post: {},
         userPosts: []
-    }),
+    }), 
     async mounted() {
-        // this.userPosts = await GetPostsForUser(this.$route.params);
-        this.user = await GetUserInfo(this.$route.params);
+        this.userPosts = await GetPostsForUser(this.$route.params.handle);
+        this.user = await GetUserInfo(this.$route.params.handle);
     },
     components: {
         UserProfileHeader,
@@ -43,9 +43,6 @@ export default {
     methods: {
         
     },
-    props: {
-        ['handle']: String,
-    }
 }
 </script>
 
