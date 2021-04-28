@@ -7,17 +7,21 @@ import Session from "../models/Session"
         return api('users');
     }
 
-    export function GetMyFriends() {
-        return api( 'users/friends' );
+    export function GetMyFriends(handle) {
+        return api( `users/friends/${handle}` );
     }  
-    
+
+    export function SearchUsers(user_id) {
+        return api(`users/${user_id}`)
+    }
+
     export function GetUserInfo(user_id){
         return api( `users/${user_id}` ); 
     } 
 
-    // export function GetFriends(handle) {
-    //     return api(`users/friend/${handle}`)
-    // }
+    export function GetFriends(handle) {
+        return api(`users/friend/${handle}`)
+    }
 
     export function AddFriend(user_handle) {
         return api (`users/addFriend/${user_handle}`)

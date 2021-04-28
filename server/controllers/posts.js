@@ -16,7 +16,7 @@ const app = express.Router();
         } )
         .get('/:handle', (req, res)=> {
             res.send( model.GetWall(req.user.handle))
-        }) //don't touch -> for my posts
+        }) // works
         .get('/user/:handle', (req, res)=> {
             res.send( model.GetWall(req.params.handle))
         })

@@ -8,7 +8,7 @@ import { api } from "../models/myFetch";
 
     export function GetMyPosts(handle) {
         return api( `posts/${handle}` );
-    } // don't touch -> for my posts
+    } // works
 
     export function GetMyFeed() {
         return api( "posts" ); 

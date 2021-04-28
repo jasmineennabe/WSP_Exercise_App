@@ -12,12 +12,9 @@ const app = express.Router();
             console.log(req.headers) ;
         })
         .get('/:user_id', LoginRequired, (req, res)=> res.send( model.GetByHandle(req.params.user_id) ))
-        .get('/friends', LoginRequired, (req, res)=> {
+        .get('/friends/:handle', LoginRequired, (req, res)=> {
             res.send( model.GetFriends(req.user.handle))
-        })
-        // .get('/friend/:handle', (req, res)=> {
-        //     res.send( model.GetFriends(req.params.handle))
-        // })
+        }) // works
         .post('/', LoginRequired, (req, res)=> {
             res.send( model.Add(req.body) );
         })

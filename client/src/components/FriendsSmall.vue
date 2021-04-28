@@ -2,7 +2,6 @@
   <div class="friends-panel"> 
     <article class="panel">
         <div class="panel-heading">
-            <!-- {{ text }} -->
             Find Friends
             <p v-if="showFriends" @click.prevent="toggleFriends" class="toggle">
                 <i class="fas fa-minus toggleBtn"></i>
@@ -11,38 +10,71 @@
                 <i class="fas fa-plus toggleBtn"></i>
             </p>
         </div>
+
         <div v-show="showFriends">
             <p class="ptabs">
-                <a>My Friends</a>
-                <a>Groups</a>
-                <a>Chat</a>
+                <a @click.prevent="toggleMyFriends">My Friends</a>
+                <a @click.prevent="toggleGroups">Groups</a>
+                <a @click.prevent="toggleSearch">Search</a>
             </p>
-            <div class="panel-block search">
-                <p class="control has-icons-left">
-                <input class="input" type="search" placeholder="Search" v-model="handle">
-                <span class="icon is-left">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </span>
-                </p>
+
+            <div v-show="showMyFriends">
+                <div v-if="showLess">
+                    <a class="panel-block" v-for="(friend, i) in friends.slice(0, 4)" :key="i">
+                        <span class="panel-icon">
+                            <i class="fas fa-user-friends" aria-hidden="true"></i>
+                        </span>
+                    <router-link :to="`/user/${friend.handle}`">{{ friend.firstName }} {{ friend.lastName }}</router-link>
+                    </a>
+                </div>
+                <div v-else>
+                    <a class="panel-block" v-for="(friend, i) in friends.slice(0, 10)" :key="i">
+                        <span class="panel-icon">
+                            <i class="fas fa-user-friends" aria-hidden="true"></i>
+                        </span>
+                        {{ friend.firstName }} {{ friend.lastName }}
+                    </a>
+                </div>
+                <div class="more">
+                    <i @click.prevent="toggleShowMore" class="fas fa-ellipsis-h"></i>
+                </div>
             </div>
-            <div v-if="showLess">
-                <a class="panel-block" v-for="(friend, i) in friends" :key="i"> <!-- .slice(0, 4) -->
+
+            <div v-show="showGroups">
+                <div class="panel-block">
                     <span class="panel-icon">
-                        <i class="fas fa-user-friends" aria-hidden="true"></i>
+                        <i class="fas fa-users" aria-hidden="true"></i>
                     </span>
-                    {{ friend.firstName }} {{ friend.lastName }}
-                </a>
+                </div>
+                <div class="more">
+                    <i @click.prevent="toggleShowMore" class="fas fa-ellipsis-h"></i>
+                </div>
             </div>
-            <div v-else>
-                <a class="panel-block" v-for="(friend, i) in friends" :key="i"> <!-- .slice(0, 10) -->
-                    <span class="panel-icon">
-                        <i class="fas fa-user-friends" aria-hidden="true"></i>
+
+            <div v-show="showSearch">
+                <div class="panel-block search">
+                    <div class="control has-icons-left">
+                    <form @submit.prevent="searchFriends(handle)">
+                        <input class="input" type="search" placeholder="Search" v-model="handle">
+                    </form>
+                    <span class="icon is-left">
+                        <i type="submit" class="fas fa-search" aria-hidden="true"></i>
                     </span>
-                    {{ friend.firstName }} {{ friend.lastName }}
-                </a>
-            </div>
-            <div class="more">
-                <i @click.prevent="toggleShowMore" class="fas fa-ellipsis-h"></i>
+                        <div v-show="userFound">
+                            <span class="panel-icon">
+                                <br>
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </span>
+                            <router-link :to="`/user/${searchedUser}`">@{{searchedUser}}</router-link>
+                        </div>
+                        <div v-show="noUserFound">
+                            <p>No user found</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="more">
+                    <i @click.prevent="toggleShowMore" class="fas fa-ellipsis-h"></i>
+                </div>
             </div>
         </div>
     </article>
@@ -50,15 +82,22 @@
 </template>
 
 <script>
-    import { GetMyFriends } from '../models/Users'
+    import { GetMyFriends, SearchUsers } from '../models/Users'
     
 export default {
     data: ()=> ({
-        handle: null,
+        handle: '',
+        searchedUser: null,
         users: [],
         showFriends: false,
         showLess: true,
         friends: [],
+        showMyFriends: true,
+        showSearch: false,
+        showGroups: false, 
+        userFound: null,
+        noUserFound: null,
+
     }),
     async mounted() {
         this.friends = await GetMyFriends();
@@ -72,17 +111,39 @@ export default {
         },
         toggleShowMore() {
             this.showLess = !this.showLess
+        },
+        toggleMyFriends() {
+            this.showMyFriends = true;
+            this.showSearch = false;
+            this.showGroups = false;
+            this.userFound = false;
+        },
+        toggleSearch() {
+            this.showSearch = true;
+            this.showMyFriends = false;
+            this.showGroups = false;
+            this.userFound = false;
+        },
+        toggleGroups() {
+            this.showGroups = true;
+            this.showMyFriends = false;
+            this.showSearch = false;
+            this.userFound = false;
+
+        },
+        async searchFriends(handle) {
+            const usr = await SearchUsers(handle)
+            if(usr) {
+                this.searchedUser = usr.handle;
+                this.userFound = true;
+                this.noUserFound = false;
+            } else {
+                this.searchedUser = null;
+                this.noUserFound = true;
+                this.userFound = false;
+            }
         }
-        // searchFriends(handle) {
-        //     if(this.handle == handle) {
-        //         return user;
-        //     }
-        // }
-        
-    },
-    // props: {
-    //     showComp: Boolean,
-    // }
+    }, 
 }
 </script>
 
@@ -105,7 +166,9 @@ export default {
     }
     p.ptabs {
         text-align: left;
-        margin-top: 10px;
+        margin: 10px 3px;
+        border: solid;
+        border-width: 1px; 
     }
     .friends-panel a {
         margin: 10px 5px;
@@ -114,8 +177,13 @@ export default {
         padding-left: 10px;
         padding-right: 10px;
     }
+    .friends-panel a:hover {
+        color: #710000;
+        font-weight: bolder;
+    }
     input.input {
         width: 250px;
+        margin-bottom: 10px;
     }
     button {
         cursor: pointer;

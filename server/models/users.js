@@ -59,14 +59,13 @@ const list = [
     module.exports.GetAll = ()=> list;
 
     module.exports.Get = (user_id)=> list[user_id];
- 
+
     module.exports.GetByHandle = (handle)=> ({ ...list.find( (x, i)=> x.handle == handle), password: undefined });
-    
+
     module.exports.GetFriends = (handle)=> ( module.exports.GetByHandle(handle).friends
         .filter(f=> f.isApproved).map(f=> {
-            const user = module.exports.GetByHandle(f.user_handle);
-            //console.log(user)
-            return { firstName: user.firstName, lastName: user.lastName }    
+            const user = module.exports.GetByHandle(f.user_handle)
+            return { firstName: user.firstName, lastName: user.lastName, handle: user.handle }    
     })); 
     
     module.exports.AddFriend = (handle, user_handle) => {
