@@ -22,7 +22,7 @@
             Track    
         </router-link> 
 
-        <div class="navbar-item has-dropdown is-hoverable">
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-item">
                 Discover    
             </a> 
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </div>
-        </div>                  
+        </div>                   -->
       </div>
       <div class="navbar-end">
         <LoginBadge />
