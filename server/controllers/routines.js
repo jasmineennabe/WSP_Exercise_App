@@ -15,3 +15,5 @@ const app = express.Router();
         //     res.send( model.AddRoutine(req.body) );
         // })
         // .delete('/:routine_id', (req, res)=> res.send( model.Delete(req.params.routine_id) ) );
+        
+module.exports = app;
