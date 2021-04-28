@@ -5,7 +5,7 @@
                 <img class="is-rounded" :src="Session.user.pic" :alt="`${Session.user.firstName} ${Session.user.lastName}`">    
             </figure>
             <figure class="image is-5by4" v-show="showEdit">
-                <img class="is-rounded" :src="imageSource" alt="Change Photo"> 
+                <img class="is-rounded" :src="Session.user.pic" alt="Change Photo"> 
                 <button class="edit-photo" @click.prevent="changeSource">Change Photo</button>
             </figure> 
         </div>
@@ -38,7 +38,7 @@
                 <i @click.prevent="edit" class="title is-4 fas fa-user-edit"></i>
             </div>
             <div v-show="!showEdit">
-                <p class="user-bio">{{Session.user.bio}}</p>
+                <p class="user-bio">"{{Session.user.bio}}"</p>
             </div>
             <div v-show="showEdit">
                 <textarea v-model="newBio" class="bio" placeholder="Tap here to edit your bio"></textarea>
@@ -75,14 +75,20 @@ export default {
         },
         async updateUser() {
             const updatedUser = { 
-                // firstName: Session.user.firstName, 
+                // firstName: Session.user.firstName,
                 // lastName: Session.user.lastName,
+                // handle: Session.user.handle,
                 pic: this.newPic,
                 bio: this.newBio,  
             }
-            console.log("updated user: ", updatedUser)
-            await UpdateProfile(Session.user, updatedUser);
-            //Session.user.bio = this.newBio
+            await UpdateProfile(Session.user.handle, updatedUser);
+            this.showEdit = false;
+            if(this.newBio){
+                Session.user.bio = this.newBio
+            }
+            if(this.newPic){
+                Session.user.pic = this.newPic
+            }
         }
     }
 }
@@ -101,15 +107,16 @@ export default {
         position: absolute;
     }
     button.edit-photo {
-        float: left;
-        border: none;
-        background-color: #cdcdcd;
-        margin-top: -140px;
+        float: right;
+        border: solid;
+        background-color: white;
+        margin-top: 10px;
+        margin-right: 20px;
         cursor: pointer;
-        margin-left: 110px;
-        position: relative;
-        font-size: 25px;
-        font-family: 'Bebas Neue', sans-serif;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bolder;
+        font-family: 'Montserrat', sans-serif;
     }
     button.edit-photo:hover {
         color: #710000;
@@ -146,6 +153,7 @@ export default {
         margin-bottom: 0;
     }
     div.media-content {
+        cursor: default;
         margin-left: auto;
         margin-right: auto;
         font-family: 'Montserrat', sans-serif;
@@ -173,6 +181,7 @@ export default {
         background-color: #710000;
     }
     div.user-stats {
+        cursor: default;
         display: block;
         color: #710000;
         font-size: 20px;
@@ -190,8 +199,10 @@ export default {
         font-family: 'Bangers', cursive;
     }
     p.user-bio {
-        border: solid;
-        border-color: #a3a3a3;
+        cursor: default;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-style: italic;
         border-width: 1px;
         padding: 5px;
     }
