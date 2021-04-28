@@ -10,10 +10,10 @@ const app = express.Router();
             res.send( model.GetMyRoutines(req.user.handle) );
                    
         })
-        // .post('/', (req, res)=> {
-        //     req.body.user_handle = req.user.handle;
-        //     res.send( model.AddRoutine(req.body) );
-        // })
+        .post('/add', (req, res)=> {
+            req.body.user_handle = req.user.handle;
+            res.send( model.AddRoutine(req.body) );
+        })
         // .delete('/:routine_id', (req, res)=> res.send( model.Delete(req.params.routine_id) ) );
         
 module.exports = app;

@@ -20,8 +20,8 @@ export default {
         routines: [],
         routine: {},
     }),
-    mounted() {
-        this.routines = GetMyRoutines();
+    async mounted() {
+        this.routines = await GetMyRoutines();
     },
     components: {
         MyRoutinesBadge,

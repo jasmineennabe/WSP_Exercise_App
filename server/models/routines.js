@@ -283,7 +283,7 @@ const list = [
     };
 
     module.exports.AddRoutine = (routine)=> {
-        list.push(routine);
+        list.unshift(routine);
         return { ...routine };
     };
 

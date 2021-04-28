@@ -10,7 +10,7 @@ const { LoginRequired  } = require('./controllers/security');
 const usersModel = require('./models/users');
 const usersCtrl = require('./controllers/users');
 const postsCtrl = require('./controllers/posts');
-
+const routinesCtrl = require('./controllers/routines');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,7 +28,7 @@ app
 
     .use('/users', usersCtrl)
     .use('/posts', LoginRequired, postsCtrl)
-
+    .use('/routines', routinesCtrl)
 
         // last item
     .get('*', (req, res) => {

@@ -3,7 +3,7 @@
       <form @submit.prevent="createRoutine">
           <div class="field">
             <label class="label">Title</label>
-                <input class="input box" type="text" placeholder="Give Your Workout a Name" v-model="title">
+                <input class="input box" type="text" placeholder="Give Your Workout a Name" v-model="title" required>
         </div>
 
         <div class="field2">
@@ -74,11 +74,11 @@ export default {
       window.history.back()
     },
     createRoutine() {
-      if(!this.title) {
-        this.title = this.date
-      }     
+      // if(!this.title) {
+      //   this.title = this.date
+      // }     
       this.routines.push({
-        id: this.wId++,
+        routine_id: this.wId++,
         title: this.title,
         date: this.date,
         workouts: this.workouts,
@@ -88,6 +88,7 @@ export default {
         this.workouts= []
         
         AddRoutine(this.routines)
+        this.$router.push('/track')
     },
       
   },

@@ -3,9 +3,9 @@ import { api } from "../models/myFetch";
 
 
 export function AddRoutine(routine) {
-    return api("routines", routine);
+    return api("routines/add", routine);
 }
-
+ 
 export function GetMyRoutines() {
     return api("routines/myRoutines");
 }

@@ -10,7 +10,7 @@
                 
                 <div class="routine-buttons"> 
                     <div class="button-row">
-                        <TrackRoutineBadge v-for="(routine, id) in routines" :key="id" :routine="routine" :text=routine.title />  
+                        <TrackRoutineBadge v-for="(routine, id) in routines" :key="id" :routine="routine" :text=routine.title @click.prevent="$emit('thisRoutine', routine.title)" />  
                     </div>
                 </div>
             </div>
@@ -54,25 +54,16 @@
 
 export default {
     data:()=> ({
-        // routine: {},
         routines: [],
-        progressBar: 4,
-    }),
-    methods: {
-        addToProgress() {
-            // if(this.routines.length){
-            //     this.progressBar++
-            // }
-        },
-    },
+        progressBar: null,
+    }), 
     async mounted() {
         this.routines = await GetMyRoutines();
-        // console.log("routines: ", this.routines)
+        this.progressBar = this.routines.length;    
     },
     components: {
         TrackRoutineBadge,
-    }
-
+    },
 }
 </script>
 
