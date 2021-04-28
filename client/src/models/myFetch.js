@@ -29,7 +29,7 @@ export function api(url, data, method){
             else return x.json().then(y=> { throw y; })
         })
         .catch(err=>{
-            console.error((err))
+            console.error(err)
             toastError(err.msg || err);
         });
 }
