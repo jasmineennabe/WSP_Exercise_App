@@ -10,7 +10,7 @@
                 
                 <div class="routine-buttons"> 
                     <div class="button-row">
-                        <TrackRoutineBadge v-for="(routine, id) in routines" :key="id" :routine="routine" :text=routine.title @click.prevent="$emit('thisRoutine', routine.title)" />  
+                        <TrackRoutineBadge v-for="(routine, id) in routines" :key="id" :routine="routine" :text=routine.title />  
                     </div>
                 </div>
             </div>

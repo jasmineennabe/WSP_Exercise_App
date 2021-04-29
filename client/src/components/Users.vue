@@ -3,7 +3,7 @@
 <template>
      <div id="users" class="columns">
         <div class="column is-one-fifth">
-            <button class="heading" @click.prevent="toggleTable">Users</button>
+            <button class="usr-btn" @click.prevent="toggleTable">Users</button>
             
         </div>
         <div class="column">
@@ -57,7 +57,7 @@ export default Vue.extend({
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    button.heading {
+    button.usr-btn {
         font-size: 30px;
         font-family: 'Bebas Neue', sans-serif;
         width: 100px;
