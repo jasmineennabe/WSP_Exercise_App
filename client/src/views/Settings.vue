@@ -22,16 +22,17 @@
           </div>
           <div class="column settings-content">
               <div v-show="showMyAccount">
-                  my account
-                  <!-- import component -->
+                  <AcctSettings :user="user" />
               </div>
               <div v-show="showPreferences">
-                  preferences
-                   <!-- import component -->
+                  <div class="more-to-come">
+                      Check back later to see how you can manage your Profile Preferences
+                  </div>
               </div>
               <div v-show="showSupport">
-                  support
-                   <!-- import component -->
+                  <div class="more-to-come">
+                    Check back later to see FAQ and get User Support
+                  </div>
               </div>
               <div v-show="showAdmin">
                   <Users />
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+    import AcctSettings from '../components/AcctSettings.vue'
     import Users from '../components/Users.vue'
     import Session from "../models/Session"
 
@@ -53,6 +55,7 @@ export default {
             showPreferences: false,
             showSupport: false,
             showAdmin: false,
+            user: {},
         }
     },
     methods: {
@@ -83,6 +86,7 @@ export default {
     },
     components: {
         Users,
+        AcctSettings,
     }
 }
 </script>
@@ -125,5 +129,12 @@ export default {
     .setting-item button:hover {
         background-color: #a3a3a3;
         border-radius: 4px;
+    }
+    .more-to-come {
+        font-family: 'Bebas Neue', sans-serif;
+        font-style: italic;
+        margin: 40px 120px;
+        color: black;
+        font-size: 25px;
     }
 </style>
