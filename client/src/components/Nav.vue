@@ -50,7 +50,7 @@
       </div>
 
 
-      <div class="autocomplete">
+      <!-- <div class="autocomplete">
         Search for Users
         <input v-model="name" @input="onChange" type="text"/>
         <ul v-show="isOpen" class="autocomplete-results">
@@ -58,23 +58,23 @@
             {{ user.firstName }} {{ user.lastName }}
           </li>
         </ul>
-      </div>
+      </div> -->
 
-      <!-- <section>
+      <section>
         <p class="content"></p>
         <b-field label="Search for users">
            <b-autocomplete
                 rounded
                 v-model="name"
-                :data="filteredDataArray"
+                :data="users"
                 placeholder="e.g. John Doe"
                 icon="magnify"
                 clearable
-                @select ="option => (name = option)">
-                <template #empty>No results found</template>
+                @typing ="option => selected = option">
+                <template #empty>No user found</template> 
             </b-autocomplete>
         </b-field>
-    </section> -->
+    </section>
 
     
 
@@ -105,7 +105,7 @@ export default {
       users: [],
       results: [],
       name: '',
-      isOpen: true,
+      isOpen: false,
     }),
     async mounted() {
       this.users = await GetAllUsers();
@@ -120,14 +120,14 @@ export default {
       }
   },
     computed: {
-    //   filteredDataArray() {
-    //       return this.users.filter((option) => {
-    //           return option
-    //               .toString()
-    //               .toLowerCase()
-    //               .indexOf(this.name.toLowerCase()) >= 0
-    //       })
-    //     }
+      // filteredDataArray() {
+      //     return this.users.filter((option) => {
+      //         return option
+      //             .toString()
+      //             .toLowerCase()
+      //             .indexOf(this.name.toLowerCase()) >= 0
+      //     })
+      //   }
     },
     components: {
         LoginBadge,
@@ -184,29 +184,24 @@ a.navbar-item.button.is-light {
     margin-right: 5px;
     color: black;
 }
-.search-bar {
-    margin: auto;
-    margin-left: 25px;  
-}
-.search-title {
-    display: inline-block;
-    margin-right: 15px;
-    color: black;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-}
-.search {
-    display: inline-block;
-    border-radius: 7px;
-    border: none;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-    padding: 7px 10px;
-    width: 225px;
-}
-.dropdown-suggestions {
-    visibility: hidden;
-}
+.autocomplete {
+    position: relative;
+  }
+
+  .autocomplete-results {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eeeeee;
+    height: 120px;
+    overflow: auto;
+  }
+
+  .autocomplete-result {
+    list-style: none;
+    text-align: left;
+    padding: 4px 2px;
+    cursor: pointer;
+  }
 
 /* HOVER STYLES */
 a.navbar-item:hover {
