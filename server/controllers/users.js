@@ -7,7 +7,7 @@ const { LoginRequired } = require('./security');
 const app = express.Router();
 
     app 
-        .get('/', LoginRequired, (req, res)=> {
+        .get('/', (req, res)=> {
             res.send( model.GetAll() ); 
             console.log(req.headers) ;
         })

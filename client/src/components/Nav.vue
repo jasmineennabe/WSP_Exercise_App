@@ -21,8 +21,8 @@
         <router-link class="navbar-item" tag="a" to="/track">
             Track    
         </router-link> 
-
-        <!-- <div class="navbar-item has-dropdown is-hoverable">
+        
+        <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-item">
                 Discover    
             </a> 
@@ -46,8 +46,49 @@
                     </li>
                 </ul>
             </div>
-        </div>                   -->
+        </div>                   
       </div>
+
+
+      <div class="autocomplete">
+        Search for Users
+        <input v-model="name" @input="onChange" type="text"/>
+        <ul v-show="isOpen" class="autocomplete-results">
+          <li v-for="(user, firstName) in users" :key="firstName" class="autocomplete-result">
+            {{ user.firstName }} {{ user.lastName }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- <section>
+        <p class="content"></p>
+        <b-field label="Search for users">
+           <b-autocomplete
+                rounded
+                v-model="name"
+                :data="filteredDataArray"
+                placeholder="e.g. John Doe"
+                icon="magnify"
+                clearable
+                @select ="option => (name = option)">
+                <template #empty>No results found</template>
+            </b-autocomplete>
+        </b-field>
+    </section> -->
+
+    
+
+      <!-- <div class="search-bar" >   :class="{'open':openSuggestion}" -->
+          <!-- <p class="search-title">Find a Member</p> -->
+          
+          <!-- <input class="search" type="text" placeholder="Search for users" v-model="selection"> -->
+          <!-- <i type="submit" class="fas fa-search" aria-hidden="true"></i> -->
+            <!-- <li :v-for="(suggestion, i) in users" :key="i"> -->
+                <!-- <a :href="`/user/${suggestion.handle}`">{{ suggestion }}</a> -->
+            <!-- </li>          -->
+        <!-- </div>   -->
+
+
       <div class="navbar-end">
         <LoginBadge />
       </div>
@@ -57,13 +98,39 @@
 
 <script>
   import LoginBadge from "./LoginBadge";
+  import { GetAllUsers } from "../models/Users"
 
 export default {
     data: ()=> ({
-      isActive:false,
+      users: [],
+      results: [],
+      name: '',
+      isOpen: true,
     }),
+    async mounted() {
+      this.users = await GetAllUsers();
+    },
+    methods: {
+      filterResults() {
+        this.results = this.users.filter(user => user.toLowerCase().indexOf(this.name.toLowerCase()) > -1);
+      },
+      onChange() {
+        this.filterResults();
+        this.isOpen = true;
+      }
+  },
+    computed: {
+    //   filteredDataArray() {
+    //       return this.users.filter((option) => {
+    //           return option
+    //               .toString()
+    //               .toLowerCase()
+    //               .indexOf(this.name.toLowerCase()) >= 0
+    //       })
+    //     }
+    },
     components: {
-      LoginBadge,
+        LoginBadge,
     }
 }
 </script>
@@ -90,7 +157,7 @@ export default {
 a.navbar-item {
     color: black;
     font-family: 'Bebas Neue', sans-serif;
-    padding: 0 50px;
+    padding: 0 40px;
     font-size: 23px;
 }
 div.navbar-dropdown {
@@ -117,7 +184,29 @@ a.navbar-item.button.is-light {
     margin-right: 5px;
     color: black;
 }
-
+.search-bar {
+    margin: auto;
+    margin-left: 25px;  
+}
+.search-title {
+    display: inline-block;
+    margin-right: 15px;
+    color: black;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+}
+.search {
+    display: inline-block;
+    border-radius: 7px;
+    border: none;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 7px 10px;
+    width: 225px;
+}
+.dropdown-suggestions {
+    visibility: hidden;
+}
 
 /* HOVER STYLES */
 a.navbar-item:hover {
